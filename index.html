@@ -4,135 +4,336 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RS Automation EP | Decision Engines & Workflow Automation</title>
-  <meta name="description" content="We build decision engines, reporting workflows, and custom automation for small teams and businesses." />
+  <meta
+    name="description"
+    content="We build decision engines, reporting workflows, and custom automation for small teams and businesses."
+  />
   <style>
     :root{
-    --bg:#f7f9fc;
-    --text:#0f172a;
-    --muted:#475569;
-    --line:#dbe3ef;
-    --card:#ffffff;
-    --brand:#2563eb;
-    --brand-dark:#1d4ed8;
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --dark:#0b1220;
+      --dark-2:#111827;
+      --light:#ffffff;
+      --success:#16a34a;
+      --radius:16px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--page);
-      color: var(--ink);
-      line-height: 1.55;
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
     }
-    a { text-decoration: none; color: inherit; }
-    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
     .nav{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
     }
 
     .nav-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:18px;
-    min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:72px;
     }
 
     .brand{
-    font-size:1.28rem;
-    font-weight:800;
-    letter-spacing:-0.03em;
-    color:var(--text);
-    white-space:nowrap;
+      font-size:1.28rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
     }
 
     .brand span{
-    color:var(--brand);
+      color:var(--brand);
     }
 
     .menu{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
     .menu a{
-    color:var(--muted);
-    font-weight:600;
-    transition:.2s ease;
+      color:var(--muted);
+      font-weight:600;
+      transition:.2s ease;
     }
 
     .menu a:hover{
-    color:var(--text);
+      color:var(--text);
     }
 
     .btn{
-    display:inline-block;
-    padding:14px 20px;
-    border-radius:12px;
-    font-weight:700;
-    border:1px solid var(--line);
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
     }
 
     .btn-primary{
-    background:var(--brand);
-    color:#fff !important;
-    border-color:var(--brand);
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
     }
 
     .btn-primary:hover{
-    background:var(--brand-dark);
-    color:#fff !important;
+      background:var(--brand-dark);
+      color:#fff !important;
     }
 
     .btn-secondary{
-    background:#fff;
-    color:var(--text);
+      background:#fff;
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      border-color:#c6d2ea;
+      background:#fdfefe;
     }
 
     .nav-cta{
-    margin-left:4px;
+      margin-left:4px;
     }
 
-    @media (max-width: 860px){
-    .hero-grid,
-    .grid-3,
-    .problem-grid{
-        grid-template-columns:1fr;
+    .hero{
+      padding:72px 0 56px;
+      background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
     }
 
-    .cta{
-        display:grid;
-        grid-template-columns:1fr;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
     }
 
     h1{
-        font-size:38px;
+      margin:0 0 18px;
+      font-size:52px;
+      line-height:1.05;
+      letter-spacing:-0.04em;
+      max-width:760px;
+    }
+
+    .lead{
+      margin:0 0 26px;
+      font-size:20px;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
+      color:#dbeafe;
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 18px 40px rgba(15,23,42,.18);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .terminal-top{
+      font-size:13px;
+      color:#93c5fd;
+      margin-bottom:16px;
+      font-weight:700;
+    }
+
+    .code{
+      font-family:"Courier New", monospace;
+      font-size:14px;
+      line-height:1.75;
+      color:#dbeafe;
+    }
+
+    .code .muted{
+      color:#93a7c7;
+    }
+
+    .code .ok{
+      color:#86efac;
+      font-weight:700;
+    }
+
+    .section{
+      padding:72px 0;
     }
 
     h2{
+      margin:0 0 14px;
+      font-size:36px;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    h3{
+      margin:0 0 10px;
+      font-size:20px;
+      line-height:1.2;
+    }
+
+    .section-copy{
+      margin:0 0 30px;
+      font-size:18px;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .problem-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:20px;
+    }
+
+    .problem{
+      background:#fff;
+      border:1px solid var(--line);
+      border-left:5px solid var(--brand);
+      border-radius:14px;
+      padding:20px;
+      color:var(--muted);
+    }
+
+    .problem strong{
+      display:block;
+      margin-bottom:8px;
+      color:var(--text);
+    }
+
+    .cta{
+      background:linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
+      color:#fff;
+      border-radius:20px;
+      padding:34px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:20px;
+      align-items:center;
+    }
+
+    .cta h3{
+      margin:0 0 10px;
+      font-size:30px;
+      color:#fff;
+    }
+
+    .cta p{
+      margin:0;
+      color:#cbd5e1;
+      max-width:720px;
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:#64748b;
+      font-size:14px;
+      border-top:1px solid #e8edf7;
+    }
+
+    @media (max-width: 860px){
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 0;
+      }
+
+      .menu{
+        width:100%;
+        gap:12px 16px;
+      }
+
+      .nav-cta{
+        margin-left:0;
+      }
+
+      .hero-grid,
+      .grid-3,
+      .problem-grid{
+        grid-template-columns:1fr;
+      }
+
+      .cta{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      h2{
         font-size:30px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
     }
-    }
-  
   </style>
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="index.html" class="brand">RS <span>Automation EP</span></a>
-  
+
       <nav class="menu">
         <a href="index.html">Home</a>
         <a href="use-cases.html">Use Cases</a>
@@ -148,12 +349,17 @@
       <div>
         <div class="eyebrow">Decision engines for small teams</div>
         <h1>Stop running your business through manual spreadsheet labor.</h1>
-        <p class="lead">We build custom automation, reporting workflows, and decision engines that reduce repetitive work, tighten operations, and help small teams move faster with fewer errors.</p>
+        <p class="lead">
+          We build custom automation, reporting workflows, and decision engines
+          that reduce repetitive work, tighten operations, and help small teams
+          move faster with fewer errors.
+        </p>
         <div style="display:flex; gap:14px; flex-wrap:wrap;">
           <a class="btn btn-primary" href="contact.html">Get in Touch</a>
           <a class="btn btn-secondary" href="use-cases.html">See Use Cases</a>
         </div>
       </div>
+
       <div class="hero-card">
         <div class="terminal-top">rsautomationep terminal</div>
         <div class="code">
@@ -161,7 +367,7 @@
           <div class="ok">✓ files ingested</div>
           <div class="ok">✓ validation checks passed</div>
           <div class="ok">✓ output generated</div>
-          <br>
+          <br />
           <div>time saved: <span class="ok">6.5 hours / week</span></div>
           <div>error exposure: <span class="ok">reduced</span></div>
           <div>status: <span class="ok">complete</span></div>
@@ -174,7 +380,12 @@
     <div class="wrap">
       <div class="eyebrow">What we build</div>
       <h2>Custom systems that make better decisions automatically</h2>
-      <p class="section-copy">This is not generic software setup. We design practical tools around the way your team already works: spreadsheets, folders, reports, forms, and repetitive review steps.</p>
+      <p class="section-copy">
+        This is not generic software setup. We design practical tools around the
+        way your team already works: spreadsheets, folders, reports, forms, and
+        repetitive review steps.
+      </p>
+
       <div class="grid-3">
         <div class="card">
           <h3>Decision Engines</h3>
@@ -192,11 +403,15 @@
     </div>
   </section>
 
-  <section class="section" style="background:#eef3fb;">
+  <section class="section" style="background:var(--soft);">
     <div class="wrap">
       <div class="eyebrow">Common pain points</div>
       <h2>Where small businesses lose time</h2>
-      <p class="section-copy">Most teams do not need more software. They need fewer manual handoffs, cleaner logic, and repeatable workflows.</p>
+      <p class="section-copy">
+        Most teams do not need more software. They need fewer manual handoffs,
+        cleaner logic, and repeatable workflows.
+      </p>
+
       <div class="problem-grid">
         <div class="problem">
           <strong>Weekly reports built by hand</strong>
@@ -222,7 +437,11 @@
     <div class="wrap">
       <div class="eyebrow">Why RS Automation EP</div>
       <h2>Built with business logic first</h2>
-      <p class="section-copy">The value is not just code. The value is building the right structure underneath your process so the output is fast, clean, and usable.</p>
+      <p class="section-copy">
+        The value is not just code. The value is building the right structure
+        underneath your process so the output is fast, clean, and usable.
+      </p>
+
       <div class="grid-3">
         <div class="card">
           <h3>Practical</h3>
@@ -245,7 +464,10 @@
       <div class="cta">
         <div>
           <h3>Have a process that keeps eating time?</h3>
-          <p>If you have a workflow buried in spreadsheets, emails, reports, or manual review steps, that is likely a candidate for automation.</p>
+          <p>
+            If you have a workflow buried in spreadsheets, emails, reports, or
+            manual review steps, that is likely a candidate for automation.
+          </p>
         </div>
         <div>
           <a class="btn btn-primary" href="contact.html">Book a Call</a>
@@ -255,7 +477,9 @@
   </section>
 
   <footer>
-    <div class="wrap">© RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams</div>
+    <div class="wrap">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams
+    </div>
   </footer>
 </body>
 </html>
