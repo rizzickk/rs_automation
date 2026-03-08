@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | RS Automation EP</title>
+  <meta name="description" content="Contact RS Automation EP to discuss workflow automation, reporting systems, and decision engines." />
+  <style>
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f6f8fc; color:#182033; line-height:1.55; }
+    a { text-decoration:none; color:inherit; }
+    .wrap { max-width:1020px; margin:0 auto; padding:0 20px; }
+    .nav { background:#fff; border-bottom:1px solid #e6ebf5; }
+    .nav-inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { font-weight:800; font-size:20px; }
+    .brand span { color:#4f8cff; }
+    .menu { display:flex; gap:22px; align-items:center; color:#44506f; font-size:15px; }
+    .btn { display:inline-block; padding:12px 18px; border-radius:10px; font-weight:700; background:#4f8cff; color:#fff; }
+    .hero { padding:60px 0 24px; }
+    .eyebrow { color:#4f8cff; font-weight:800; text-transform:uppercase; letter-spacing:.08em; font-size:12px; margin-bottom:10px; }
+    h1 { font-size:44px; margin:0 0 14px; }
+    .lead { color:#4c5878; font-size:19px; max-width:760px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:24px; padding-bottom:70px; }
+    .card { background:#fff; border:1px solid #e5ebf7; border-radius:16px; padding:26px; box-shadow:0 8px 24px rgba(17,24,39,.04); }
+    .item { margin-bottom:18px; }
+    .item strong { display:block; margin-bottom:6px; }
+    form { display:grid; gap:14px; }
+    input, textarea {
+      width:100%;
+      border:1px solid #d7e0f0;
+      border-radius:10px;
+      padding:14px;
+      font:inherit;
+      background:#fff;
+    }
+    textarea { min-height:140px; resize:vertical; }
+    .note { color:#61708f; font-size:14px; }
+    @media (max-width: 900px) {
+      .menu { display:none; }
+      .grid { grid-template-columns:1fr; }
+      h1 { font-size:36px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+      <nav class="menu">
+        <a href="use-cases.html">Use Cases</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn" href="contact.html">Book a Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h1>Let’s look at the workflow that is slowing you down</h1>
+      <p class="lead">A good first automation target is usually a process your team repeats often, dreads doing, and cannot afford to get wrong.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap grid">
+      <div class="card">
+        <div class="item">
+          <strong>Email</strong>
+          <a href="mailto:info@rsautomationep.com">info@rsautomationep.com</a>
+        </div>
+        <div class="item">
+          <strong>Phone</strong>
+          <a href="tel:+19154785436">(915) 478-5436</a>
+        </div>
+        <div class="item">
+          <strong>Book directly</strong>
+          <a href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">Calendly</a>
+        </div>
+        <div class="item">
+          <strong>Best things to send</strong>
+          A short description of the process, what takes too long, and where mistakes or delays usually happen.
+        </div>
+      </div>
+
+      <div class="card">
+        <form>
+          <input type="text" placeholder="Name" />
+          <input type="text" placeholder="Company" />
+          <input type="email" placeholder="Email" />
+          <textarea placeholder="What process do you want automated?"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="note">This form is currently front-end only. To make it work, connect it to Formspree, Netlify Forms, or another form handler.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,426 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>RS Automation EP | Automation for Small Teams</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="RS Automation EP builds simple internal tools, Excel automations, dashboards, and workflow systems for small teams and businesses."
-  />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RS Automation EP | Decision Engines & Workflow Automation</title>
+  <meta name="description" content="We build decision engines, reporting workflows, and custom automation for small teams and businesses." />
   <style>
     :root {
-      --bg: #0b1220;
-      --panel: #111827;
-      --soft: #f8fafc;
-      --text: #0f172a;
-      --muted: #475569;
-      --line: #e2e8f0;
-      --blue: #2563eb;
-      --blue-dark: #1d4ed8;
+      --bg: #0b1020;
+      --panel: #121933;
+      --line: #243056;
+      --text: #edf2ff;
+      --muted: #b8c2e3;
+      --accent: #4f8cff;
+      --accent-2: #7db1ff;
       --white: #ffffff;
-      --max: 1120px;
-      --radius: 18px;
+      --page: #f6f8fc;
+      --ink: #182033;
     }
-
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background: var(--white);
+      background: var(--page);
+      color: var(--ink);
       line-height: 1.55;
     }
-
     a { text-decoration: none; color: inherit; }
-
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 22px;
-      border-radius: 12px;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--blue);
-      color: var(--white);
-    }
-
-    .btn-primary:hover { background: var(--blue-dark); }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    .nav {
       background: var(--white);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover { background: #f8fafc; }
-
-    .section {
-      padding: 80px 0;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
-
-    h1, h2, h3 {
-      margin: 0 0 16px;
-      line-height: 1.1;
-    }
-
-    p { margin: 0 0 16px; }
-
-    .muted { color: var(--muted); }
-
-    header {
+      border-bottom: 1px solid #e6ebf5;
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(226,232,240,0.8);
+      z-index: 10;
     }
-
-    .nav {
-      min-height: 72px;
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      min-height: 72px;
     }
-
-    .brand {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
+    .brand { font-weight: 800; font-size: 20px; }
+    .brand span { color: var(--accent); }
+    .menu {
       display: flex;
+      gap: 22px;
       align-items: center;
-      gap: 18px;
-      font-size: 14px;
-      color: var(--muted);
+      color: #44506f;
+      font-size: 15px;
     }
-
-    .hero {
-      background:
-        radial-gradient(circle at top right, rgba(37,99,235,0.12), transparent 30%),
-        linear-gradient(180deg, #f8fbff 0%, #ffffff 60%);
-      padding: 88px 0 72px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(40px, 6vw, 68px);
-      letter-spacing: -0.04em;
-    }
-
-    .hero p.lead {
-      font-size: 20px;
-      color: var(--muted);
-      max-width: 700px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .hero-card {
-      background: var(--panel);
-      color: #dbeafe;
-      border-radius: var(--radius);
-      padding: 24px;
-      box-shadow: 0 20px 50px rgba(15,23,42,0.12);
-    }
-
-    .terminal-top {
-      color: #93c5fd;
-      font-size: 13px;
-      margin-bottom: 18px;
+    .btn {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 10px;
       font-weight: 700;
     }
-
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-secondary { border: 1px solid #d6def0; background: white; }
+    .hero {
+      background: linear-gradient(180deg, #eef4ff 0%, #f6f8fc 100%);
+      padding: 72px 0 56px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 36px;
+      align-items: center;
+    }
+    h1 {
+      font-size: 52px;
+      line-height: 1.05;
+      margin: 0 0 18px;
+      color: #10182f;
+    }
+    .lead {
+      font-size: 20px;
+      color: #42506e;
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+    .hero-card {
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 18px 40px rgba(18,25,51,.18);
+    }
+    .terminal-top {
+      color: #9bb0e6;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
     .code {
-      font-family: Menlo, Monaco, Consolas, monospace;
+      font-family: "Courier New", monospace;
       font-size: 14px;
-      line-height: 1.8;
-      color: #cbd5e1;
+      color: #dbe4ff;
+      line-height: 1.7;
     }
-
-    .code .ok { color: #86efac; }
-    .code .blue { color: #93c5fd; }
-
-    .trust-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .trust-box {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px;
-      background: var(--white);
-    }
-
-    .cards-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 26px;
-      background: var(--white);
-    }
-
-    .card h3 {
-      font-size: 22px;
+    .code .muted { color: #7d8fbf; }
+    .code .ok { color: #8df0b5; }
+    .section { padding: 72px 0; }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 12px;
       margin-bottom: 10px;
     }
-
-    .steps {
+    h2 {
+      font-size: 36px;
+      line-height: 1.15;
+      margin: 0 0 14px;
+      color: #10182f;
+    }
+    .section-copy {
+      color: #4c5878;
+      max-width: 760px;
+      margin-bottom: 32px;
+      font-size: 18px;
+    }
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
-
-    .step-num {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: var(--blue-dark);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      margin-bottom: 14px;
+    .card {
+      background: white;
+      border: 1px solid #e5ebf7;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(17,24,39,.04);
     }
-
-    .split {
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #111a30;
+    }
+    .card p { margin: 0; color: #4d5877; }
+    .problem-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
-
-    .panel-dark {
-      background: var(--bg);
-      color: var(--white);
-      border-radius: 24px;
-      padding: 42px;
+    .problem {
+      background: #fff;
+      border-left: 5px solid var(--accent);
+      border-radius: 14px;
+      padding: 20px;
+      border-top: 1px solid #e5ebf7;
+      border-right: 1px solid #e5ebf7;
+      border-bottom: 1px solid #e5ebf7;
     }
-
-    .panel-dark p { color: #cbd5e1; }
-
-    .checklist {
-      padding-left: 20px;
-      margin: 16px 0 0;
-      color: #cbd5e1;
-    }
-
-    .checklist li { margin-bottom: 10px; }
-
+    .problem strong { display: block; margin-bottom: 8px; }
     .cta {
-      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+      background: var(--bg);
+      color: var(--text);
+      border-radius: 20px;
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
-
+    .cta h3 { font-size: 30px; margin: 0 0 10px; }
+    .cta p { margin: 0; color: var(--muted); max-width: 720px; }
     footer {
-      padding: 28px 0 44px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+      padding: 28px 0 50px;
+      color: #61708f;
       font-size: 14px;
     }
-
-    @media (max-width: 920px) {
-      .hero-grid,
-      .cards-3,
-      .steps,
-      .split,
-      .trust-row {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 16px 0;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        padding-top: 56px;
-      }
+    @media (max-width: 900px) {
+      .hero-grid, .grid-3, .problem-grid, .cta { grid-template-columns: 1fr; display: grid; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 30px; }
+      .menu { display: none; }
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="container nav">
-      <div class="brand">RS Automation EP</div>
-      <div class="nav-links">
-        <span>(915) 478-5436</span>
-        <span>info@rsautomationep.com</span>
-        <a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
-      </div>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+      <nav class="menu">
+        <a href="use-cases.html">Use Cases</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary" href="contact.html">Book a Call</a>
+      </nav>
     </div>
   </header>
 
   <section class="hero">
-    <div class="container hero-grid">
+    <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow">Automation for Small Teams</div>
-        <h1>Stop losing hours to manual spreadsheets, repetitive admin work, and messy workflows.</h1>
-        <p class="lead">
-          We build simple internal tools, automations, dashboards, and decision workflows that help small businesses run faster with fewer errors.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">Get in Touch</a>
-          <a class="btn btn-secondary" href="#services">See Services</a>
+        <div class="eyebrow">Decision engines for small teams</div>
+        <h1>Stop running your business through manual spreadsheet labor.</h1>
+        <p class="lead">We build custom automation, reporting workflows, and decision engines that reduce repetitive work, tighten operations, and help small teams move faster with fewer errors.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="contact.html">Get in Touch</a>
+          <a class="btn btn-secondary" href="use-cases.html">See Use Cases</a>
         </div>
       </div>
-
       <div class="hero-card">
-        <div class="terminal-top">rsautomationep / workflow run</div>
+        <div class="terminal-top">rsautomationep terminal</div>
         <div class="code">
-          <div><span class="blue">input:</span> weekly spreadsheet + inbox + file folder</div>
-          <div><span class="blue">process:</span> validate rows, flag issues, route decisions</div>
-          <div><span class="ok">✓</span> duplicate checks complete</div>
-          <div><span class="ok">✓</span> errors surfaced automatically</div>
-          <div><span class="ok">✓</span> dashboard updated</div>
-          <div><span class="ok">✓</span> report delivered in minutes, not hours</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container trust-row">
-      <div class="trust-box"><strong>Excel automation</strong><br><span class="muted">Reduce repetitive file work</span></div>
-      <div class="trust-box"><strong>Internal tools</strong><br><span class="muted">Simple systems your team can actually use</span></div>
-      <div class="trust-box"><strong>Decision workflows</strong><br><span class="muted">Turn tribal logic into repeatable process</span></div>
-    </div>
-  </section>
-
-  <section id="services" class="section">
-    <div class="container">
-      <div class="eyebrow">What We Build</div>
-      <h2>Practical systems for teams that are doing too much by hand.</h2>
-      <p class="muted" style="max-width:760px; margin-bottom: 32px;">
-        We focus on the work that slows small teams down the most: spreadsheet cleanup, recurring reports, file-based processes, repetitive decisions, and admin-heavy workflows.
-      </p>
-
-      <div class="cards-3">
-        <div class="card">
-          <h3>Excel & Reporting Automation</h3>
-          <p class="muted">Automate recurring spreadsheets, reporting files, exports, validations, and summary outputs.</p>
-        </div>
-        <div class="card">
-          <h3>Internal Tools</h3>
-          <p class="muted">Build lightweight tools for quoting, tracking, intake, routing, follow-up, and day-to-day operations.</p>
-        </div>
-        <div class="card">
-          <h3>Workflow & Decision Logic</h3>
-          <p class="muted">Turn “if this, then that” business rules into clean systems your team can run consistently.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background:#f8fafc;">
-    <div class="container">
-      <div class="eyebrow">How It Works</div>
-      <h2>Simple engagement. No bloated process.</h2>
-
-      <div class="steps" style="margin-top: 32px;">
-        <div class="card">
-          <div class="step-num">1</div>
-          <h3>Show the workflow</h3>
-          <p class="muted">You walk through the task, report, file process, or decision flow that is wasting time.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">2</div>
-          <h3>We design the system</h3>
-          <p class="muted">We simplify the logic, remove waste, and build the cleanest version of the workflow.</p>
-        </div>
-        <div class="card">
-          <div class="step-num">3</div>
-          <h3>Your team runs it</h3>
-          <p class="muted">You get a usable solution that saves time, reduces errors, and makes work easier to manage.</p>
+          <div><span class="muted">$</span> run decision-engine --workflow weekly_reporting</div>
+          <div class="ok">✓ files ingested</div>
+          <div class="ok">✓ validation checks passed</div>
+          <div class="ok">✓ output generated</div>
+          <br>
+          <div>time saved: <span class="ok">6.5 hours / week</span></div>
+          <div>error exposure: <span class="ok">reduced</span></div>
+          <div>status: <span class="ok">complete</span></div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container split">
-      <div class="panel-dark">
-        <div class="eyebrow" style="color:#93c5fd;">Good Fit</div>
-        <h2 style="color:#fff;">This is for you if your team is constantly doing work like this:</h2>
-        <ul class="checklist">
-          <li>Copying and pasting data between files every week</li>
-          <li>Reviewing spreadsheets manually for issues or exceptions</li>
-          <li>Sending the same follow-ups or status updates repeatedly</li>
-          <li>Making repetitive operational decisions from the same rules</li>
-          <li>Depending on one person who “knows how the process works”</li>
-        </ul>
-      </div>
-
-      <div class="card" style="height:100%;">
-        <div class="eyebrow">What You Get</div>
-        <h2>A cleaner operation without adding more headcount.</h2>
-        <p class="muted">The goal is not flashy software. The goal is a business that runs with less friction.</p>
-        <p class="muted"><strong>Result:</strong> fewer errors, less admin drag, faster turnaround, and clearer visibility into what is actually happening.</p>
+    <div class="wrap">
+      <div class="eyebrow">What we build</div>
+      <h2>Custom systems that make better decisions automatically</h2>
+      <p class="section-copy">This is not generic software setup. We design practical tools around the way your team already works: spreadsheets, folders, reports, forms, and repetitive review steps.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Decision Engines</h3>
+          <p>Tools that apply rules, scoring, and business logic so your team can make consistent decisions faster.</p>
+        </div>
+        <div class="card">
+          <h3>Workflow Automation</h3>
+          <p>Automate repetitive file movement, report prep, validation, and recurring operational tasks.</p>
+        </div>
+        <div class="card">
+          <h3>Reporting Systems</h3>
+          <p>Turn manual reporting into reliable output with clean logic, traceable steps, and fewer mistakes.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section cta">
-    <div class="container" style="text-align:center;">
-      <div class="eyebrow">Next Step</div>
-      <h2>Ready to automate the work your team keeps repeating?</h2>
-      <p class="muted" style="max-width:720px; margin: 0 auto 24px;">
-        Start with one painful workflow. We’ll help you turn it into a cleaner, faster system.
-      </p>
-      <a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
+  <section class="section" style="background:#eef3fb;">
+    <div class="wrap">
+      <div class="eyebrow">Common pain points</div>
+      <h2>Where small businesses lose time</h2>
+      <p class="section-copy">Most teams do not need more software. They need fewer manual handoffs, cleaner logic, and repeatable workflows.</p>
+      <div class="problem-grid">
+        <div class="problem">
+          <strong>Weekly reports built by hand</strong>
+          Teams spend hours copying, pasting, checking, and fixing the same files every week.
+        </div>
+        <div class="problem">
+          <strong>Inconsistent decisions</strong>
+          Different people apply different logic because rules live in heads, emails, or old spreadsheets.
+        </div>
+        <div class="problem">
+          <strong>No visibility into workflow status</strong>
+          Leaders cannot easily see what is done, delayed, broken, or waiting on input.
+        </div>
+        <div class="problem">
+          <strong>Too much operational drag</strong>
+          Good employees spend time pushing files around instead of doing higher-value work.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Why RS Automation EP</div>
+      <h2>Built with business logic first</h2>
+      <p class="section-copy">The value is not just code. The value is building the right structure underneath your process so the output is fast, clean, and usable.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Practical</h3>
+          <p>Built around the tools your team already uses instead of forcing a major platform change.</p>
+        </div>
+        <div class="card">
+          <h3>Controlled</h3>
+          <p>Logic is explicit, traceable, and easier to maintain than scattered manual steps.</p>
+        </div>
+        <div class="card">
+          <h3>Lean</h3>
+          <p>Designed for small teams that need leverage, not enterprise overhead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h3>Have a process that keeps eating time?</h3>
+          <p>If you have a workflow buried in spreadsheets, emails, reports, or manual review steps, that is likely a candidate for automation.</p>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="contact.html">Book a Call</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <footer>
-    <div class="container">
-      © RS Automation EP · El Paso, Texas · info@rsautomationep.com · (915) 478-5436
-    </div>
+    <div class="wrap">© RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams</div>
   </footer>
-
 </body>
 </html>
