@@ -7,153 +7,315 @@
   <meta name="description" content="Contact RS Automation EP to discuss workflow automation, reporting systems, and decision engines." />
   <style>
     :root{
-    --bg:#f7f9fc;
-    --text:#0f172a;
-    --muted:#475569;
-    --line:#dbe3ef;
-    --card:#ffffff;
-    --brand:#2563eb;
-    --brand-dark:#1d4ed8;
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
     }
-    body { margin:0; font-family:Arial, Helvetica, sans-serif; background:#f6f8fc; color:#182033; line-height:1.55; }
-    a { text-decoration:none; color:inherit; }
-    .wrap { max-width:1020px; margin:0 auto; padding:0 20px; }
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .wrap{
+      max-width:1020px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
     .nav{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
     }
 
     .nav-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:18px;
-    min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:72px;
     }
 
     .brand{
-    font-size:1.28rem;
-    font-weight:800;
-    letter-spacing:-0.03em;
-    color:var(--text);
-    white-space:nowrap;
+      font-size:1.28rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
     }
 
     .brand span{
-    color:var(--brand);
+      color:var(--brand);
     }
 
     .menu{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
     .menu a{
-    color:var(--muted);
-    font-weight:600;
-    transition:.2s ease;
+      color:var(--muted);
+      font-weight:600;
+      transition:.2s ease;
     }
 
     .menu a:hover{
-    color:var(--text);
+      color:var(--text);
     }
 
     .btn{
-    display:inline-block;
-    padding:14px 20px;
-    border-radius:12px;
-    font-weight:700;
-    border:1px solid var(--line);
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
     }
 
     .btn-primary{
-    background:var(--brand);
-    color:#fff !important;
-    border-color:var(--brand);
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
     }
 
     .btn-primary:hover{
-    background:var(--brand-dark);
-    color:#fff !important;
+      background:var(--brand-dark);
+      color:#fff !important;
     }
 
     .btn-secondary{
-    background:#fff;
-    color:var(--text);
+      background:#fff;
+      color:var(--text);
     }
 
     .nav-cta{
-    margin-left:4px;
+      margin-left:4px;
+    }
+
+    .hero{
+      padding:72px 0 36px;
+      background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      max-width:820px;
+    }
+
+    .lead{
+      margin:0;
+      font-size:20px;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .section{
+      padding:24px 0 72px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+
+    .item{
+      padding:0 0 18px;
+      margin:0 0 18px;
+      border-bottom:1px solid #e9eef7;
+    }
+
+    .item:last-child{
+      margin-bottom:0;
+      padding-bottom:0;
+      border-bottom:none;
+    }
+
+    .item strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:6px;
+      color:var(--text);
+    }
+
+    .item,
+    .item a{
+      color:var(--muted);
+    }
+
+    form{
+      display:grid;
+      gap:14px;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px 14px;
+      font:inherit;
+      color:var(--text);
+      background:#fff;
+      outline:none;
+      transition:border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input:focus,
+    textarea:focus{
+      border-color:var(--brand);
+      box-shadow:0 0 0 3px rgba(37,99,235,.10);
+    }
+
+    textarea{
+      min-height:140px;
+      resize:vertical;
+    }
+
+    button{
+      appearance:none;
+      border:none;
+      border-radius:12px;
+      padding:14px 18px;
+      background:var(--brand);
+      color:#fff;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .2s ease;
+    }
+
+    button:hover{
+      background:var(--brand-dark);
+    }
+
+    .footer{
+      padding:28px 0 40px;
+      color:#64748b;
+      border-top:1px solid #e8edf7;
+      font-size:14px;
     }
 
     @media (max-width: 860px){
-    .nav-inner{
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .nav-inner{
         flex-direction:column;
         align-items:flex-start;
         padding:14px 0;
-    }
+      }
 
-    .menu{
+      .menu{
         width:100%;
         gap:12px 16px;
-    }
+      }
 
-    .nav-cta{
+      .nav-cta{
         margin-left:0;
-    }
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
     }
   </style>
 </head>
 <body>
-    <header class="nav">
-        <div class="wrap nav-inner">
-          <a href="index.html" class="brand">RS <span>Automation EP</span></a>
-      
-          <nav class="menu">
-            <a href="index.html">Home</a>
-            <a href="use-cases.html">Use Cases</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a class="btn btn-primary nav-cta" href="contact.html">Book a Call</a>
-          </nav>
-        </div>
-      </header>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Book a Call</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="hero">
     <div class="wrap">
       <div class="eyebrow">Contact</div>
-      <h1>Let’s look at the workflow that is slowing you down</h1>
-      <p class="lead">A good first automation target is usually a process your team repeats often, dreads doing, and cannot afford to get wrong.</p>
+      <h1>Let’s look at the workflow that is slowing you down.</h1>
+      <p class="lead">
+        A good first automation target is usually a process your team repeats often,
+        dreads doing, and cannot afford to get wrong.
+      </p>
     </div>
   </section>
 
-  <section>
+  <section class="section">
     <div class="wrap grid">
       <div class="card">
         <div class="item">
           <strong>Email</strong>
           <a href="mailto:info@rsautomationep.com">info@rsautomationep.com</a>
         </div>
+
         <div class="item">
           <strong>Phone</strong>
           <a href="tel:+19154785436">(915) 478-5436</a>
         </div>
+
         <div class="item">
           <strong>Book directly</strong>
-          <a href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">Calendly</a>
+          <a href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">
+            Calendly
+          </a>
         </div>
+
         <div class="item">
           <strong>Best things to send</strong>
           A short description of the process, what takes too long, and where mistakes or delays usually happen.
@@ -162,20 +324,20 @@
 
       <div class="card">
         <form action="https://formspree.io/f/mvzwgbrp" method="POST">
-
-            <input type="text" name="name" placeholder="Name" required>
-          
-            <input type="text" name="company" placeholder="Company">
-          
-            <input type="email" name="email" placeholder="Email" required>
-          
-            <textarea name="message" placeholder="What process do you want automated?" required></textarea>
-          
-            <button type="submit">Send</button>
-          
-          </form>
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="text" name="company" placeholder="Company" />
+          <input type="email" name="email" placeholder="Email" required />
+          <textarea name="message" placeholder="What process do you want automated?" required></textarea>
+          <button type="submit">Send</button>
+        </form>
       </div>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams
+    </div>
+  </footer>
 </body>
 </html>
