@@ -173,20 +173,42 @@
       font-size: 14px;
     }
     @media (max-width: 900px) {
-    h2 { font-size: 30px; }
+    .nav-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 14px 0;
+    }
 
     .menu {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      width: 100%;
     }
-   }ia (max-width: 900px) 
-   {
-      .hero-grid, .grid-3, .problem-grid, .cta { grid-template-columns: 1fr; display: grid; }
-      h1 { font-size: 38px; }
-      h2 { font-size: 30px; }
-     
+
+    .hero-grid,
+    .grid-3,
+    .problem-grid {
+      grid-template-columns: 1fr;
     }
+
+    .cta {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      font-size: 38px;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .btn {
+      width: auto;
+    }
+  }
   </style>
 </head>
 <body>
