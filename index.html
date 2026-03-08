@@ -1,497 +1,463 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9; min-height: 14.0px}
-    span.s1 {font-kerning: none}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RS Automation EP | Excel, Python, and AI Workflow Automation</title>
+  <meta
+    name="description"
+    content="RS Automation EP builds custom Excel, Python, and AI-powered workflow automations that reduce manual work, improve reporting, and increase operational visibility."
+  />
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ef;
+      --card: #ffffff;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --dark: #0b1220;
+      --success: #0f766e;
+      --max: 1120px;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 249, 252, 0.88);
+      border-bottom: 1px solid rgba(219, 227, 239, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 72px;
+    }
+
+    .brand {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .hero {
+      padding: 88px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      color: var(--success);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .sub {
+      max-width: 720px;
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.22);
+    }
+
+    .btn-primary:hover { background: var(--brand-dark); }
+
+    .btn-secondary {
+      background: white;
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover { background: #f8fbff; }
+
+    .mini-proof {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #0f172a 0%, #081121 100%);
+      color: #dbeafe;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.22);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .terminal-title {
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-weight: 700;
+    }
+
+    .terminal-code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+
+    .terminal-code .bright { color: #f8fafc; }
+    .terminal-code .ok { color: #86efac; }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 0 14px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-copy {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 42px;
+      font-size: 1.05rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .dark {
+      background: var(--dark);
+      color: white;
+    }
+
+    .dark .section-copy { color: #94a3b8; }
+
+    .dark .card {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(148, 163, 184, 0.16);
+      box-shadow: none;
+    }
+
+    .dark .card p { color: #cbd5e1; }
+
+    .testimonial {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .quote {
+      font-size: clamp(1.25rem, 2.3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .quote-meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #0f172a 0%, #111f39 100%);
+      color: white;
+      border-radius: 26px;
+      padding: 44px 28px;
+      text-align: center;
+      border: 1px solid rgba(148,163,184,0.16);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+    }
+
+    .cta-box p {
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 12px auto 24px;
+    }
+
+    footer {
+      padding: 32px 0 56px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .nav-inner,
+      .nav-right,
+      .footer-inner {
+        display: block;
+      }
+
+      .nav-right > * {
+        display: block;
+        margin-top: 8px;
+      }
+    }
   </style>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;RS Automation EP | Excel, Python, and AI Workflow Automation&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>name="description"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>content="RS Automation EP builds custom Excel, Python, and AI-powered workflow automations that reduce manual work, improve reporting, and increase operational visibility."</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>/&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>:root {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--bg: #f7f9fc;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--text: #0f172a;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--muted: #475569;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--line: #dbe3ef;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--card: #ffffff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--brand: #2563eb;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--brand-dark: #1d4ed8;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--dark: #0b1220;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--success: #0f766e;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--max: 1120px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>--radius: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>* { box-sizing: border-box; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>html { scroll-behavior: smooth; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-family: Arial, Helvetica, sans-serif;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: linear-gradient(180deg, #f8fafc 0%, #eef4fb 100%);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--text);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>line-height: 1.5;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>a { text-decoration: none; color: inherit; }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.wrap {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: min(var(--max), calc(100% - 32px));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.nav {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>position: sticky;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>top: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>z-index: 20;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>backdrop-filter: blur(10px);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: rgba(247, 249, 252, 0.88);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-bottom: 1px solid rgba(219, 227, 239, 0.8);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.nav-inner {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>justify-content: space-between;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>min-height: 72px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.brand {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1.7rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 800;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>letter-spacing: -0.03em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.nav-links {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 0.98rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.btn {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: inline-block;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 14px 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 700;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>transition: 0.2s ease;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.btn-primary {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--brand);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.btn-primary:hover { background: var(--brand-dark); }</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.btn-secondary {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid var(--line);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--text);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 72px 0 48px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero-grid {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>grid-template-columns: 1.15fr 0.85fr;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 28px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.eyebrow {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: inline-block;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 8px 12px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid #cfe0ff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 999px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #eff6ff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--brand-dark);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 0.9rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 700;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>h1 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: clamp(2.5rem, 6vw, 4.6rem);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>line-height: 0.98;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>letter-spacing: -0.05em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.sub {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 680px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 24px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1.14rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero-cta {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero-points {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 16px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 0.96rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.hero-points span::before {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>content: "• ";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--brand);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 700;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.terminal {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--dark);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #cbd5e1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 20px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255,255,255,0.06);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.terminal-top {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: flex;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>align-items: center;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 8px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.dot {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>width: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>height: 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 50%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #475569;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.term-title {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-left: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-right: auto;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #e2e8f0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.term-code {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-family: "Courier New", Courier, monospace;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>line-height: 1.8;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>white-space: pre-line;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>section {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 34px 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.section-head {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.section-head h2 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 8px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: clamp(1.8rem, 3vw, 2.6rem);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>letter-spacing: -0.04em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.section-head p {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 760px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.cards-3 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>grid-template-columns: repeat(3, 1fr);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.card {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: var(--card);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid var(--line);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: var(--radius);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 22px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.card h3 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1.1rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.card p {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.proof {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: grid;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>grid-template-columns: 1fr 1fr;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gap: 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.metric {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 2rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-weight: 800;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>letter-spacing: -0.04em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-bottom: 6px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.quote {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: #0f172a;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #e2e8f0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: none;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.quote p {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #cbd5e1;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 1.05rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.quote small {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>display: block;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin-top: 14px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #94a3b8;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.cta-box {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>background: linear-gradient(135deg, #0f172a 0%, #172554 100%);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #fff;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border-radius: 24px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 34px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>border: 1px solid rgba(255,255,255,0.08);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.cta-box h2 {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 10px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: clamp(1.8rem, 3vw, 2.8rem);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>letter-spacing: -0.04em;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.cta-box p {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>margin: 0 0 18px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: #dbeafe;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>max-width: 760px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.footer {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>padding: 28px 0 40px;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>color: var(--muted);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>font-size: 0.95rem;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>@media (max-width: 900px) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.hero-grid,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.cards-3,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.proof {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>grid-template-columns: 1fr;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.nav-inner {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>padding: 12px 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.nav-links {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>width: 100%;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>justify-content: space-between;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>flex-wrap: wrap;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>@media (max-width: 560px) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>h1 { font-size: 2.4rem; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.brand { font-size: 1.35rem; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.hero { padding-top: 42px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>.cta-box { padding: 24px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;header class="nav"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="wrap nav-inner"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="brand"&gt;RSAutomationEP&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="nav-links"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#services"&gt;What We Automate&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="#results"&gt;Results&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="tel:+19154785436"&gt;(915) 478-5436&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="mailto:info@rsautomationep.com"&gt;info@rsautomationep.com&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;main&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="wrap hero-grid"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="eyebrow"&gt;Excel • Python • AI Workflow Automation&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h1&gt;Manual reporting is expensive.&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p class="sub"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>We build custom automations that reduce repetitive work, improve reporting accuracy,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>and give your team real operational visibility without forcing you into a new platform.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="hero-cta"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Book a 30-minute call</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a class="btn btn-secondary" href="#services"&gt;See what we automate&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="hero-points"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span&gt;Runs in your environment&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span&gt;Works with existing files and processes&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span&gt;Built for operational and compliance-sensitive teams&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="terminal"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="terminal-top"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="dot"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="dot"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="dot"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="term-title"&gt;rsautomationep terminal&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="term-code"&gt;</span></p>
-<p class="p1"><span class="s1">rsautomationep --python automate.py --module reporting</span></p>
-<p class="p1"><span class="s1">✓ Source files loaded</span></p>
-<p class="p1"><span class="s1">✓ Logic checks completed</span></p>
-<p class="p1"><span class="s1">✓ Errors detected</span></p>
-<p class="p1"><span class="s1">✓ Issues resolved</span></p>
-<p class="p1"><span class="s1">✓ Output package generated</span></p>
-<p class="p1"><span class="s1">Time saved: 90%</span></p>
-<p class="p1"><span class="s1">Accuracy improved</span></p>
-<p class="p1"><span class="s1">Workflow complete</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="services"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="wrap"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="section-head"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2&gt;What we automate&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>We do not sell generic software. We build targeted workflows around the files,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>reports, approvals, and logic your team already uses.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="cards-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Reporting workflows&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Automate recurring Excel, CSV, and folder-based reporting processes that currently</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>depend on manual refreshes, formatting, validation, and distribution.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Error detection and controls&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Surface logic breaks, threshold breaches, missing data, and process failures before</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>they become audit issues or operational rework.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3&gt;AI-assisted operations&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Add practical AI where it actually helps: classification, summarization, document</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>review, routing, or workflow triggers tied to your existing process.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="results"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="wrap"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="section-head"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2&gt;What clients actually care about&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Less manual effort. Better consistency. Faster turnaround. More confidence in the output.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="proof"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="metric"&gt;Hours back&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Replace repeated manual handling with logic that runs the same way every time.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="metric"&gt;Fewer mistakes&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Reduce risk from copy-paste work, spreadsheet drift, missed checks, and inconsistent execution.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="metric"&gt;Faster visibility&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>Give leaders and operators cleaner signals sooner, without waiting on a manually assembled report.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div class="card quote"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">              </span>“Their automation scripts worked inside our secure environment and removed hours of repetitive work from the process.”</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;small&gt;Compliance manager, large U.S. bank&lt;/small&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div class="wrap"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="cta-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2&gt;Start with one workflow.&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>The best first project is usually one painful recurring process your team already hates doing.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>We automate that first, prove the value, then expand from there.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Get in touch</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/main&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;footer class="footer"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="wrap"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>© RSAutomationEP · El Paso, TX · Excel, Python, and AI-powered workflow automation</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="#" class="brand">RSAutomationEP</a>
+      <div class="nav-right">
+        <span>(915) 478-5436</span>
+        <span>info@rsautomationep.com</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Excel • Python • AI Workflow Automation</div>
+          <h1>Turn manual reporting into clean, reliable automation.</h1>
+          <p class="sub">
+            RS Automation EP builds custom workflow automations that reduce manual work,
+            improve reporting accuracy, and give teams more visibility across operations.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">
+              Get in Touch
+            </a>
+            <a class="btn btn-secondary" href="#services">Learn More</a>
+          </div>
+
+          <div class="mini-proof">
+            Built for teams that already live in Excel, folders, and existing reporting workflows.
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="terminal-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <div class="terminal-title">rsautomationep terminal</div>
+          </div>
+          <div class="terminal-code">
+            <div><span class="bright">rsautomationep</span> --python automate.py --module ops_reporting</div>
+            <div class="ok">✓ Source files loaded</div>
+            <div class="ok">✓ Errors detected and resolved</div>
+            <div class="ok">✓ Output generated</div>
+            <div><span class="bright">Result:</span> 90% less manual effort</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="wrap">
+        <h2 class="section-title">What we actually do</h2>
+        <p class="section-copy">
+          We do not force your team into a new platform first. We work with the process you already have,
+          automate the pain points, prove the value, then expand from there.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Custom Excel + Python Automation</h3>
+            <p>Replace repetitive file handling, manual updates, reconciliations, and recurring reporting tasks.</p>
+          </div>
+          <div class="card">
+            <h3>Workflow Visibility</h3>
+            <p>Surface what is happening across your process so leaders can see risk, throughput, and operational friction faster.</p>
+          </div>
+          <div class="card">
+            <h3>AI-Enabled Enhancements</h3>
+            <p>Add practical AI where it helps most, such as classification, summarization, issue detection, and decision support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark">
+      <div class="wrap">
+        <h2 class="section-title">Why teams use RSAutomationEP</h2>
+        <p class="section-copy">
+          The value is not just speed. It is cleaner execution, lower error risk, and workflows that hold up better under scrutiny.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Compliance-Safe Design</h3>
+            <p>Automations are built to run within your environment and align with the controls your business already operates under.</p>
+          </div>
+          <div class="card">
+            <h3>Audit-Ready Outputs</h3>
+            <p>Outputs can be structured to support traceability, validation, and defensible reporting.</p>
+          </div>
+          <div class="card">
+            <h3>No Heavy Change Management</h3>
+            <p>We start from existing reports, spreadsheets, folders, and business logic instead of forcing a full rebuild.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap testimonial">
+        <div class="quote">
+          “Their automation scripts work right inside our secure environment. No compliance issues, highly recommend.”
+        </div>
+        <div class="quote-meta">
+          Compliance Manager / Fortune 100 Bank (Name withheld due to NDA)
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta-box">
+          <h2 class="section-title" style="margin-bottom:0;">Ready to automate your first workflow?</h2>
+          <p>
+            If you have a recurring report, messy Excel process, or manual operational task that keeps wasting time,
+            that is probably the right starting point.
+          </p>
+          <a class="btn btn-primary" href="https://calendly.com/ramirez-ricardo55/30min" target="_blank" rel="noopener noreferrer">
+            Book a Call
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>RSAutomationEP</strong></div>
+      <div>© RSAutomationEP. All rights reserved.</div>
+    </div>
+  </footer>
+
 </body>
 </html>
