@@ -4,142 +4,287 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Use Cases | RS Automation EP</title>
-  <meta name="description" content="Examples of reporting automation, lead intake tools, spreadsheet cleanup, and decision engines for small businesses." />
+  <meta
+    name="description"
+    content="Examples of reporting automation, lead intake tools, spreadsheet cleanup, and decision engines for small businesses."
+  />
   <style>
     :root{
-    --bg:#f7f9fc;
-    --text:#0f172a;
-    --muted:#475569;
-    --line:#dbe3ef;
-    --card:#ffffff;
-    --brand:#2563eb;
-    --brand-dark:#1d4ed8;
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
     }
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; background:#f6f8fc; color:#182033; line-height:1.55; }
-    a { text-decoration:none; color:inherit; }
-    .wrap { max-width: 1080px; margin:0 auto; padding:0 20px; }
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .wrap{
+      max-width:1080px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
     .nav{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:rgba(247,249,252,.88);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(219,227,239,.8);
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
     }
 
     .nav-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:18px;
-    min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      min-height:72px;
     }
 
     .brand{
-    font-size:1.28rem;
-    font-weight:800;
-    letter-spacing:-0.03em;
-    color:var(--text);
-    white-space:nowrap;
+      font-size:1.28rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
     }
 
     .brand span{
-    color:var(--brand);
+      color:var(--brand);
     }
 
     .menu{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
     .menu a{
-    color:var(--muted);
-    font-weight:600;
-    transition:.2s ease;
+      color:var(--muted);
+      font-weight:600;
+      transition:.2s ease;
     }
 
     .menu a:hover{
-    color:var(--text);
+      color:var(--text);
     }
 
     .btn{
-    display:inline-block;
-    padding:14px 20px;
-    border-radius:12px;
-    font-weight:700;
-    border:1px solid var(--line);
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
     }
 
     .btn-primary{
-    background:var(--brand);
-    color:#fff !important;
-    border-color:var(--brand);
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
     }
 
     .btn-primary:hover{
-    background:var(--brand-dark);
-    color:#fff !important;
+      background:var(--brand-dark);
+      color:#fff !important;
     }
 
     .btn-secondary{
-    background:#fff;
-    color:var(--text);
+      background:#fff;
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      border-color:#c6d2ea;
+      background:#fdfefe;
     }
 
     .nav-cta{
-    margin-left:4px;
+      margin-left:4px;
     }
 
-    @media (max-width: 860px){
-    .hero-grid,
-    .grid-3,
-    .problem-grid{
-        grid-template-columns:1fr;
+    .hero{
+      padding:72px 0 44px;
+      background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
     }
 
-    .cta{
-        display:grid;
-        grid-template-columns:1fr;
+    .label{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
     }
 
     h1{
-        font-size:38px;
+      margin:0 0 16px;
+      font-size:48px;
+      line-height:1.06;
+      letter-spacing:-0.04em;
+      max-width:780px;
+    }
+
+    .lead{
+      margin:0;
+      font-size:20px;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    .section{
+      padding:56px 0 72px;
+    }
+
+    .case-grid{
+      display:grid;
+      gap:20px;
+    }
+
+    .case{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
     }
 
     h2{
-        font-size:30px;
+      margin:0 0 12px;
+      font-size:30px;
+      line-height:1.14;
+      letter-spacing:-0.03em;
     }
+
+    .case p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:17px;
+      max-width:860px;
+    }
+
+    .row{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .mini{
+      background:var(--soft);
+      border:1px solid #d8e3f6;
+      border-radius:14px;
+      padding:16px;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .mini strong{
+      display:block;
+      margin-bottom:6px;
+      color:var(--text);
+      font-size:15px;
+    }
+
+    .cta{
+      margin-top:8px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .cta .btn{
+      background:var(--brand);
+      border-color:var(--brand);
+      color:#fff;
+    }
+
+    .cta .btn:hover{
+      background:var(--brand-dark);
+    }
+
+    footer{
+      padding:28px 0 50px;
+      color:#64748b;
+      font-size:14px;
+      border-top:1px solid #e8edf7;
+    }
+
+    @media (max-width: 860px){
+      .nav-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:14px 0;
+      }
+
+      .menu{
+        width:100%;
+        gap:12px 16px;
+      }
+
+      .nav-cta{
+        margin-left:0;
+      }
+
+      .row{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      h2{
+        font-size:26px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
     }
   </style>
 </head>
 <body>
-    <header class="nav">
-        <div class="wrap nav-inner">
-          <a href="index.html" class="brand">RS <span>Automation EP</span></a>
-      
-          <nav class="menu">
-            <a href="index.html">Home</a>
-            <a href="use-cases.html">Use Cases</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a class="btn btn-primary nav-cta" href="contact.html">Book a Call</a>
-          </nav>
-        </div>
-      </header>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Book a Call</a>
+      </nav>
+    </div>
+  </header>
 
   <section class="hero">
     <div class="wrap">
       <div class="label">Use cases</div>
       <h1>Examples of what we can automate</h1>
-      <p class="lead">Small businesses usually do not need a giant software rollout. They need targeted systems that remove friction from everyday work.</p>
+      <p class="lead">
+        Small businesses usually do not need a giant software rollout. They need
+        targeted systems that remove friction from everyday work.
+      </p>
     </div>
   </section>
 
@@ -148,44 +293,92 @@
       <div class="case">
         <div class="label">Reporting automation</div>
         <h2>Weekly or monthly reporting</h2>
-        <p>Automate file pulls, checks, calculations, and final output so your team stops rebuilding the same report by hand.</p>
+        <p>
+          Automate file pulls, checks, calculations, and final output so your
+          team stops rebuilding the same report by hand.
+        </p>
         <div class="row">
-          <div class="mini"><strong>Problem</strong>Manual report preparation takes hours and is easy to break.</div>
-          <div class="mini"><strong>Solution</strong>Build a repeatable workflow that ingests files and produces output automatically.</div>
-          <div class="mini"><strong>Result</strong>Less manual work, fewer errors, faster turnaround.</div>
+          <div class="mini">
+            <strong>Problem</strong>
+            Manual report preparation takes hours and is easy to break.
+          </div>
+          <div class="mini">
+            <strong>Solution</strong>
+            Build a repeatable workflow that ingests files and produces output automatically.
+          </div>
+          <div class="mini">
+            <strong>Result</strong>
+            Less manual work, fewer errors, faster turnaround.
+          </div>
         </div>
       </div>
 
       <div class="case">
         <div class="label">Lead intake</div>
         <h2>Qualification and routing tools</h2>
-        <p>Use a lightweight decision engine to score incoming leads, flag bad fits, and route stronger opportunities more quickly.</p>
+        <p>
+          Use a lightweight decision engine to score incoming leads, flag bad
+          fits, and route stronger opportunities more quickly.
+        </p>
         <div class="row">
-          <div class="mini"><strong>Problem</strong>Leads arrive inconsistently and are handled case by case.</div>
-          <div class="mini"><strong>Solution</strong>Form-based intake with business rules and lead scoring logic.</div>
-          <div class="mini"><strong>Result</strong>Cleaner pipeline and faster response.</div>
+          <div class="mini">
+            <strong>Problem</strong>
+            Leads arrive inconsistently and are handled case by case.
+          </div>
+          <div class="mini">
+            <strong>Solution</strong>
+            Form-based intake with business rules and lead scoring logic.
+          </div>
+          <div class="mini">
+            <strong>Result</strong>
+            Cleaner pipeline and faster response.
+          </div>
         </div>
       </div>
 
       <div class="case">
         <div class="label">Spreadsheet cleanup</div>
         <h2>Messy Excel workflows</h2>
-        <p>When multiple spreadsheets feed one process, we can centralize the logic and remove repetitive copy-paste work.</p>
+        <p>
+          When multiple spreadsheets feed one process, we can centralize the
+          logic and remove repetitive copy-paste work.
+        </p>
         <div class="row">
-          <div class="mini"><strong>Problem</strong>Too many files, tabs, formulas, and manual checks.</div>
-          <div class="mini"><strong>Solution</strong>Move repeated steps into structured automation.</div>
-          <div class="mini"><strong>Result</strong>More control and fewer hidden errors.</div>
+          <div class="mini">
+            <strong>Problem</strong>
+            Too many files, tabs, formulas, and manual checks.
+          </div>
+          <div class="mini">
+            <strong>Solution</strong>
+            Move repeated steps into structured automation.
+          </div>
+          <div class="mini">
+            <strong>Result</strong>
+            More control and fewer hidden errors.
+          </div>
         </div>
       </div>
 
       <div class="case">
         <div class="label">Operational decision engines</div>
         <h2>Rule-based business decisions</h2>
-        <p>If your team keeps making the same type of judgment repeatedly, that logic can often be turned into a repeatable system.</p>
+        <p>
+          If your team keeps making the same type of judgment repeatedly, that
+          logic can often be turned into a repeatable system.
+        </p>
         <div class="row">
-          <div class="mini"><strong>Problem</strong>Different people apply rules differently.</div>
-          <div class="mini"><strong>Solution</strong>Build scoring logic, thresholds, and exception handling into one flow.</div>
-          <div class="mini"><strong>Result</strong>Faster, more consistent decisions.</div>
+          <div class="mini">
+            <strong>Problem</strong>
+            Different people apply rules differently.
+          </div>
+          <div class="mini">
+            <strong>Solution</strong>
+            Build scoring logic, thresholds, and exception handling into one flow.
+          </div>
+          <div class="mini">
+            <strong>Result</strong>
+            Faster, more consistent decisions.
+          </div>
         </div>
       </div>
 
@@ -194,5 +387,11 @@
       </div>
     </div>
   </section>
+
+  <footer>
+    <div class="wrap">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams
+    </div>
+  </footer>
 </body>
 </html>
