@@ -718,10 +718,34 @@
       }
     };
 
+    const tabKeys = ['nonprofit', 'construction', 'lawfirm', 'church'];
+    let currentTabIndex = 0;
+    let autoTimer = null;
+    let pauseTimer = null;
+
     function switchTab(key, btn) {
       document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+      currentTabIndex = tabKeys.indexOf(key);
       renderDemo(key);
+      // pause auto-rotate for 10s on manual click
+      clearTimeout(pauseTimer);
+      clearInterval(autoTimer);
+      pauseTimer = setTimeout(startAutoRotate, 10000);
+    }
+
+    function autoAdvance() {
+      currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
+      const key = tabKeys[currentTabIndex];
+      const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
+      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderDemo(key);
+    }
+
+    function startAutoRotate() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(autoAdvance, 4500);
     }
 
     function renderDemo(key) {
@@ -745,6 +769,7 @@
     }
 
     renderDemo('nonprofit');
+    startAutoRotate();
   </script>
 
   <div class="mobile-quote" style="display:none; flex-direction:column; align-items:center; text-align:center; padding:48px 24px; background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);">
