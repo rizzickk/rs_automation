@@ -234,25 +234,114 @@
 
     .founder{
       display:grid;
-      grid-template-columns:300px 1fr;
-      gap:36px;
+      grid-template-columns:260px 1fr;
+      gap:48px;
       align-items:start;
-      margin-bottom:20px;
+      margin-bottom:40px;
     }
 
     .founder-photo{
       width:100%;
-      max-width:300px;
+      max-width:260px;
       aspect-ratio:3 / 4;
       object-fit:cover;
       object-position:top;
-      border-radius:18px;
-      border:1px solid var(--line);
-      box-shadow:0 10px 24px rgba(15,23,42,.08);
+      border-radius:20px;
+      box-shadow:0 20px 48px rgba(15,23,42,.14);
     }
 
-    .founder-text p:last-child{
-      margin-bottom:0;
+    .founder-left{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .founder-name{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      text-align:center;
+    }
+
+    .founder-name strong{
+      display:block;
+      font-size:15px;
+      color:var(--text);
+      margin-bottom:4px;
+    }
+
+    .founder-name span{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .stat-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin:20px 0;
+    }
+
+    .stat-chip{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:14px 16px;
+      box-shadow:0 2px 10px rgba(15,23,42,.04);
+    }
+
+    .stat-chip .chip-icon{
+      font-size:1.2rem;
+      margin-bottom:6px;
+      display:block;
+    }
+
+    .stat-chip .chip-val{
+      font-size:14px;
+      font-weight:700;
+      color:var(--text);
+      display:block;
+      margin-bottom:2px;
+    }
+
+    .stat-chip .chip-label{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .pull-quote{
+      position:relative;
+      background:linear-gradient(135deg,#0f172a,#1e3a5f);
+      border-radius:20px;
+      padding:36px 36px 28px;
+      margin-top:40px;
+    }
+
+    .pull-quote::before{
+      content:'"';
+      position:absolute;
+      top:-18px;
+      left:28px;
+      font-size:96px;
+      color:var(--brand);
+      font-family:Georgia, serif;
+      line-height:1;
+    }
+
+    .pull-quote blockquote{
+      margin:0 0 16px;
+      font-size:16px;
+      line-height:1.75;
+      color:#cbd5e1;
+      font-style:italic;
+    }
+
+    .pull-quote cite{
+      font-size:13px;
+      font-weight:700;
+      color:#93c5fd;
+      font-style:normal;
     }
 
     .footer{
@@ -336,12 +425,23 @@
 
       .founder{
         grid-template-columns:1fr;
-        text-align:center;
+      }
+
+      .founder-left{
+        align-items:center;
       }
 
       .founder-photo{
         margin:0 auto;
-        max-width:260px;
+        max-width:220px;
+      }
+
+      .stat-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .pull-quote{
+        padding:32px 24px 24px;
       }
 
       h1{
@@ -403,44 +503,70 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="card founder">
-          <img src="images/IMG_3964_jpg.JPG" alt="Ricardo Ramirez Jr" class="founder-photo" />
+        <div class="founder">
+          <div class="founder-left">
+            <img src="images/IMG_3964_jpg.JPG" alt="Ricardo Ramirez Jr" class="founder-photo" />
+            <div class="founder-name">
+              <strong>Ricardo Ramirez Jr.</strong>
+              <span>MBA · MSBA · Air Force Veteran</span>
+            </div>
+            <a href="https://www.linkedin.com/in/ricardo-ramirez-jr/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-align:center; font-size:13px; padding:10px 16px;">
+              View LinkedIn →
+            </a>
+          </div>
 
-          <div class="founder-text">
-            <h2>About the Founder</h2>
+          <div>
+            <div class="eyebrow" style="margin-bottom:10px;">About the Founder</div>
+            <h2 style="margin:0 0 16px;">Ricardo Ramirez Jr.</h2>
 
-            <p>
+            <p style="font-size:17px; line-height:1.75; color:var(--muted); margin:0 0 28px;">
               I started RS Automation EP because I deeply care about this community and believe that business owners, nonprofits, churches, and local companies should be spending their time on the work they love — not on repetitive admin, manual reporting, or spreadsheet upkeep.
             </p>
 
-            <div class="eyebrow" style="margin-top:22px; margin-bottom:12px;">Demonstrated Work</div>
-            <ul>
-              <li>Eliminated <strong>5,600+ hours of manual work annually</strong> at USAA Bank</li>
-              <li>Built predictive risk models surfacing failures <strong>up to 6 months earlier</strong></li>
-              <li>Cut underwriting prep time <strong>~40%</strong> at GECU / United Bank</li>
-              <li>Air Force veteran — Achievement Medal recipient</li>
-              <li>Board Chair, Richard McCallum Clinic RotaCare El Paso</li>
-              <li>Member, Rotary Club of El Paso</li>
-              <li>MBA + MSBA, Texas A&M — <strong>4.0 GPA</strong></li>
-            </ul>
-
-            <p style="margin-top:20px;">
-              <a href="https://www.linkedin.com/in/ricardo-ramirez-jr/" target="_blank" rel="noopener noreferrer">
-                View Ricardo’s LinkedIn →
-              </a>
-            </p>
+            <div class="eyebrow" style="margin-bottom:14px;">Demonstrated Work</div>
+            <div class="stat-grid">
+              <div class="stat-chip">
+                <span class="chip-icon">⏱</span>
+                <span class="chip-val">5,600+ hrs saved</span>
+                <span class="chip-label">annually at USAA Bank</span>
+              </div>
+              <div class="stat-chip">
+                <span class="chip-icon">📉</span>
+                <span class="chip-val">~40% faster</span>
+                <span class="chip-label">underwriting prep at GECU</span>
+              </div>
+              <div class="stat-chip">
+                <span class="chip-icon">⚡</span>
+                <span class="chip-val">6 months earlier</span>
+                <span class="chip-label">failure detection via risk models</span>
+              </div>
+              <div class="stat-chip">
+                <span class="chip-icon">🎖️</span>
+                <span class="chip-val">Air Force Veteran</span>
+                <span class="chip-label">Achievement Medal recipient</span>
+              </div>
+              <div class="stat-chip">
+                <span class="chip-icon">🏥</span>
+                <span class="chip-val">Board Chair</span>
+                <span class="chip-label">RotaCare El Paso free clinic</span>
+              </div>
+              <div class="stat-chip">
+                <span class="chip-icon">🎓</span>
+                <span class="chip-val">MBA + MSBA</span>
+                <span class="chip-label">Texas A&M — 4.0 GPA</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="card" style="margin-top:20px; border-left:4px solid var(--brand); background:var(--soft);">
-          <div class="eyebrow" style="margin-bottom:12px;">What colleagues say</div>
-          <blockquote style="margin:0; font-size:17px; color:var(--text); line-height:1.7; font-style:italic;">
+        <div class="pull-quote">
+          <blockquote>
             "What sets Ricardo apart are his data analytic skills and his ability to pull together data from multiple sources without leadership guidance. He proactively offers analysis that creates real insight into how a process is performing — and he’s always looking for ways to automate data collection so less time is spent pulling data and more time is spent understanding it. The visibility he created kept our remediation portfolio on track and advanced the thinking of the entire team."
           </blockquote>
-          <p style="margin:14px 0 0; font-size:14px; color:var(--muted); font-style:normal;">— Senior Director, USAA Bank</p>
+          <cite>— Senior Director, USAA Bank</cite>
         </div>
 
-        <div style="text-align:center; padding:48px 0 8px;">
+        <div style="text-align:center; padding:56px 0 8px;">
           <div class="eyebrow" style="margin-bottom:12px;">Ready to simplify your workflow?</div>
           <h2 style="margin:0 0 12px;">Let’s talk about what’s slowing you down.</h2>
           <p style="color:var(--muted); font-size:17px; margin:0 0 24px;">No pressure. Just a conversation about what you’re working with and whether I can help.</p>
