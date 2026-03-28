@@ -638,7 +638,7 @@
     <div class="wrap">
       <div class="eyebrow">Live demo</div>
       <h2 style="margin:0 0 8px;">See it in action</h2>
-      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Click on an industry to see how raw data becomes a clean report.</p>
+      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;"><span class="click-cursor">&#x1F5B1;</span> Click on an industry to see how raw data becomes a clean report.</p>
 
       <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
         <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
@@ -692,6 +692,16 @@
     @keyframes reportFadeIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:translateY(0); } }
     .report-line{ display:block; opacity:0; animation:reportFadeIn .3s ease forwards; }
     .demo-content{ transition: opacity .4s ease; }
+    @keyframes cursorClick {
+      0%, 80%, 100% { transform: scale(1); opacity: .75; }
+      88%            { transform: scale(.78); opacity: 1; }
+    }
+    .click-cursor{
+      display:inline-block;
+      font-size:15px;
+      animation: cursorClick 3s ease-in-out infinite;
+      transform-origin: center;
+    }
     @media(max-width:860px){ .demo-grid{ grid-template-columns:1fr !important; } .flow-arrow{ transform:rotate(90deg); margin:8px auto; } }
   </style>
 
