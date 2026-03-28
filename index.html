@@ -338,6 +338,34 @@
       color:var(--muted);
     }
 
+    .outcome-card{
+      border-left:3px solid var(--brand);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .outcome-icon{
+      font-size:1.4rem;
+      width:40px;
+      height:40px;
+      background:var(--soft);
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    .outcome-text{
+      margin:0 !important;
+      font-size:15px !important;
+      font-weight:600 !important;
+      font-style:italic;
+      color:var(--text) !important;
+      line-height:1.5;
+    }
+
     .problem-grid{
       display:grid;
       grid-template-columns:repeat(2, 1fr);
@@ -864,17 +892,21 @@
   </script>
 
       <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
-        <div class="card">
-          <p style="margin:0; font-size:16px; font-weight:600; color:var(--text);">"Turn a 2-hour weekly report into a 1-click process"</p>
+        <div class="card outcome-card">
+          <div class="outcome-icon">⏱</div>
+          <p class="outcome-text">"Turn a 2-hour weekly report into a 1-click process"</p>
         </div>
-        <div class="card">
-          <p style="margin:0; font-size:16px; font-weight:600; color:var(--text);">"Automatically flag missing fields and bad inputs"</p>
+        <div class="card outcome-card">
+          <div class="outcome-icon">🔍</div>
+          <p class="outcome-text">"Automatically flag missing fields and bad inputs"</p>
         </div>
-        <div class="card">
-          <p style="margin:0; font-size:16px; font-weight:600; color:var(--text);">"Generate clean outputs from messy spreadsheets"</p>
+        <div class="card outcome-card">
+          <div class="outcome-icon">📊</div>
+          <p class="outcome-text">"Generate clean outputs from messy spreadsheets"</p>
         </div>
-        <div class="card">
-          <p style="margin:0; font-size:16px; font-weight:600; color:var(--text);">"Score and route leads consistently"</p>
+        <div class="card outcome-card">
+          <div class="outcome-icon">🎯</div>
+          <p class="outcome-text">"Score and route leads consistently"</p>
         </div>
       </div>
     </div>
