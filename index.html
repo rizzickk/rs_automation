@@ -638,7 +638,7 @@
     <div class="wrap">
       <div class="eyebrow">Live demo</div>
       <h2 style="margin:0 0 8px;">See it in action</h2>
-      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Pick an industry to see how raw data becomes a clean report.</p>
+      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Click on an industry to see how raw data becomes a clean report.</p>
 
       <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
         <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
@@ -647,7 +647,7 @@
         <button class="demo-tab" onclick="switchTab('church',this)">✝️ Churches</button>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid">
+      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid demo-content">
         <div>
           <div style="font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--brand); margin-bottom:10px;">Input Table</div>
           <div style="background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 4px 16px rgba(15,23,42,.06);">
@@ -691,6 +691,7 @@
     .flow-dot:nth-child(3){ animation-delay:.4s; }
     @keyframes reportFadeIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:translateY(0); } }
     .report-line{ display:block; opacity:0; animation:reportFadeIn .3s ease forwards; }
+    .demo-content{ transition: opacity .4s ease; }
     @media(max-width:860px){ .demo-grid{ grid-template-columns:1fr !important; } .flow-arrow{ transform:rotate(90deg); margin:8px auto; } }
   </style>
 
@@ -735,17 +736,22 @@
     }
 
     function autoAdvance() {
-      currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
-      const key = tabKeys[currentTabIndex];
-      const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
-      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      renderDemo(key);
+      const content = document.querySelector('.demo-content');
+      content.style.opacity = '0';
+      setTimeout(() => {
+        currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
+        const key = tabKeys[currentTabIndex];
+        const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        renderDemo(key);
+        content.style.opacity = '1';
+      }, 400);
     }
 
     function startAutoRotate() {
       clearInterval(autoTimer);
-      autoTimer = setInterval(autoAdvance, 4500);
+      autoTimer = setInterval(autoAdvance, 5500);
     }
 
     function renderDemo(key) {
