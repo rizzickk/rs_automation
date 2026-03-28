@@ -46,6 +46,7 @@
       position:sticky;
       top:0;
       z-index:20;
+      position:relative;
       background:rgba(247,249,252,.88);
       backdrop-filter:blur(10px);
       border-bottom:1px solid rgba(219,227,239,.8);
@@ -262,6 +263,30 @@
       font-size:14px;
     }
 
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:6px;
+    }
+
+    .hamburger span{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--text);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+
+    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
     @media (max-width: 860px){
       .grid{
         grid-template-columns:1fr;
@@ -271,19 +296,42 @@
         grid-template-columns:1fr;
       }
 
-      .nav-inner{
-        flex-direction:column;
-        align-items:flex-start;
-        padding:14px 0;
+      .hamburger{
+        display:flex;
       }
 
       .menu{
-        width:100%;
-        gap:12px 16px;
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        border-radius:0;
+        padding:8px 20px 16px;
+        box-shadow:0 8px 24px rgba(15,23,42,.1);
+        z-index:99;
+      }
+
+      .menu.open{
+        display:flex;
+      }
+
+      .menu a:not(.btn){
+        padding:13px 4px;
+        border-radius:0;
+        border-bottom:1px solid #f1f5f9;
+        font-size:15px;
       }
 
       .nav-cta{
-        margin-left:0;
+        margin-top:10px;
+        text-align:center;
+        border-bottom:none !important;
       }
 
       .founder{
@@ -315,7 +363,11 @@
     <div class="wrap nav-inner">
       <a href="index.html" class="brand">RS <span>Automation EP</span></a>
 
-      <nav class="menu">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="use-cases.html">Use Cases</a>
         <a href="about.html">About</a>
@@ -323,6 +375,19 @@
       </nav>
     </div>
   </header>
+
+  <script>
+    const hb = document.getElementById('hamburger');
+    const nm = document.getElementById('nav-menu');
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      nm.classList.toggle('open');
+    });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      nm.classList.remove('open');
+    }));
+  </script>
 
   <main>
     <section class="hero">
