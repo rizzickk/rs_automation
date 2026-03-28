@@ -137,7 +137,7 @@
       background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
     }
 
-    .label{
+    .label, .eyebrow{
       display:inline-block;
       margin-bottom:14px;
       font-size:.78rem;
@@ -352,9 +352,9 @@
 
   <section style="padding:56px 0; background:var(--soft);">
     <div class="wrap">
-      <div class="label">Live demo</div>
+      <div class="eyebrow">Live demo</div>
       <h2 style="margin:0 0 8px;">See it in action</h2>
-      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Pick an industry to see how raw data becomes a clean report.</p>
+      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;"><span class="click-cursor"><svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;"><path d="M1 1L1 12L4.2 9.2L6.2 14L7.8 13.4L5.8 8.4L10 8.4L1 1Z" fill="#475569" stroke="#475569" stroke-width=".5" stroke-linejoin="round"/></svg></span> Click on an industry to see how raw data becomes a clean report.</p>
 
       <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
         <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
@@ -363,7 +363,7 @@
         <button class="demo-tab" onclick="switchTab('church',this)">✝️ Churches</button>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid">
+      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid demo-content">
 
         <!-- INPUT TABLE -->
         <div>
@@ -485,6 +485,17 @@
       animation:reportFadeIn .3s ease forwards;
     }
 
+    .demo-content{ transition: opacity .4s ease; }
+    @keyframes cursorClick {
+      0%, 80%, 100% { transform: scale(1); opacity: .75; }
+      88%            { transform: scale(.78); opacity: 1; }
+    }
+    .click-cursor{
+      display:inline-block;
+      font-size:15px;
+      animation: cursorClick 3s ease-in-out infinite;
+      transform-origin: center;
+    }
     @media(max-width:860px){
       .demo-grid{
         grid-template-columns:1fr !important;
@@ -585,10 +596,38 @@
       }
     };
 
+    const tabKeys = ['nonprofit', 'construction', 'lawfirm', 'church'];
+    let currentTabIndex = 0;
+    let autoTimer = null;
+    let pauseTimer = null;
+
     function switchTab(key, btn) {
       document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+      currentTabIndex = tabKeys.indexOf(key);
       renderDemo(key);
+      clearTimeout(pauseTimer);
+      clearInterval(autoTimer);
+      pauseTimer = setTimeout(startAutoRotate, 10000);
+    }
+
+    function autoAdvance() {
+      const content = document.querySelector('.demo-content');
+      content.style.opacity = '0';
+      setTimeout(() => {
+        currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
+        const key = tabKeys[currentTabIndex];
+        const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
+        document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        renderDemo(key);
+        content.style.opacity = '1';
+      }, 400);
+    }
+
+    function startAutoRotate() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(autoAdvance, 15000);
     }
 
     function renderDemo(key) {
@@ -620,6 +659,7 @@
     }
 
     renderDemo('nonprofit');
+    startAutoRotate();
   </script>
 
 
