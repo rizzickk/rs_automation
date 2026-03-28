@@ -756,6 +756,36 @@
         </div>
       </div>
 
+  <script>
+    (function(){
+      const CYCLE = 7000; // total cycle length in ms (animation finishes ~4.7s, pause rest)
+      function restartTerminal(){
+        const lines = document.querySelectorAll('.terminal-line');
+        const bar   = document.querySelector('.progress-fill');
+        const wrap  = document.querySelector('.progress-wrap');
+
+        // Strip animations by removing/re-adding class
+        lines.forEach(el => {
+          el.classList.remove('terminal-line');
+          void el.offsetWidth; // force reflow
+          el.classList.add('terminal-line');
+        });
+
+        if(bar){
+          bar.style.animation = 'none';
+          void bar.offsetWidth;
+          bar.style.animation = '';
+        }
+        if(wrap){
+          wrap.style.animation = 'none';
+          void wrap.offsetWidth;
+          wrap.style.animation = '';
+        }
+      }
+      setInterval(restartTerminal, CYCLE);
+    })();
+  </script>
+
       <div class="grid-3">
         <div class="card">
           <h3>Decision Engines</h3>
