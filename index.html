@@ -177,6 +177,93 @@
       color:#93c5fd;
       margin-bottom:16px;
       font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .terminal-dots{
+      display:flex;
+      gap:5px;
+    }
+
+    .terminal-dots span{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      display:inline-block;
+    }
+
+    .terminal-dots span:nth-child(1){ background:#ff5f57; }
+    .terminal-dots span:nth-child(2){ background:#febc2e; }
+    .terminal-dots span:nth-child(3){ background:#28c840; }
+
+    @keyframes blink{
+      0%,100%{ opacity:1; }
+      50%{ opacity:0; }
+    }
+
+    @keyframes fadeSlideIn{
+      from{ opacity:0; transform:translateY(6px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+
+    @keyframes typing{
+      from{ width:0; }
+      to{ width:100%; }
+    }
+
+    @keyframes progressBar{
+      from{ width:0%; }
+      to{ width:100%; }
+    }
+
+    .cursor{
+      display:inline-block;
+      width:9px;
+      height:1.1em;
+      background:#86efac;
+      vertical-align:text-bottom;
+      animation:blink 1s step-end infinite;
+      margin-left:2px;
+    }
+
+    .terminal-line{
+      opacity:0;
+      animation:fadeSlideIn .4s ease forwards;
+    }
+
+    .terminal-line:nth-child(1){ animation-delay:.3s; }
+    .terminal-line:nth-child(2){ animation-delay:1.2s; }
+    .terminal-line:nth-child(3){ animation-delay:1.9s; }
+    .terminal-line:nth-child(4){ animation-delay:2.5s; }
+    .terminal-line:nth-child(5){ animation-delay:3.1s; }
+    .terminal-line:nth-child(6){ animation-delay:3.5s; }
+    .terminal-line:nth-child(7){ animation-delay:3.9s; }
+    .terminal-line:nth-child(8){ animation-delay:4.3s; }
+
+    .progress-wrap{
+      opacity:0;
+      animation:fadeSlideIn .4s ease forwards;
+      animation-delay:1.0s;
+      margin:4px 0;
+    }
+
+    .progress-track{
+      background:rgba(255,255,255,.1);
+      border-radius:4px;
+      height:5px;
+      overflow:hidden;
+      width:100%;
+    }
+
+    .progress-fill{
+      height:100%;
+      border-radius:4px;
+      background:linear-gradient(90deg, #3b82f6, #86efac);
+      width:0%;
+      animation:progressBar 1.2s ease forwards;
+      animation-delay:1.1s;
     }
 
     .code{
@@ -364,16 +451,22 @@
       </div>
 
       <div class="hero-card">
-        <div class="terminal-top">rsautomationep terminal</div>
+        <div class="terminal-top">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          rsautomationep terminal
+        </div>
         <div class="code">
-          <div><span class="muted">$</span> run decision-engine --workflow weekly_reporting</div>
-          <div class="ok">✓ files ingested</div>
-          <div class="ok">✓ validation checks passed</div>
-          <div class="ok">✓ output generated</div>
+          <div class="terminal-line"><span class="muted">$</span> run decision-engine --workflow weekly_reporting<span class="cursor"></span></div>
+          <div class="progress-wrap">
+            <div class="progress-track"><div class="progress-fill"></div></div>
+          </div>
+          <div class="terminal-line ok">✓ files ingested</div>
+          <div class="terminal-line ok">✓ validation checks passed</div>
+          <div class="terminal-line ok">✓ output generated</div>
           <br />
-          <div>time saved: <span class="ok">6.5 hours / week</span></div>
-          <div>error exposure: <span class="ok">reduced</span></div>
-          <div>status: <span class="ok">complete</span></div>
+          <div class="terminal-line">time saved: <span class="ok">6.5 hours / week</span></div>
+          <div class="terminal-line">error exposure: <span class="ok">reduced</span></div>
+          <div class="terminal-line">status: <span class="ok">complete ✦</span></div>
         </div>
       </div>
     </div>
