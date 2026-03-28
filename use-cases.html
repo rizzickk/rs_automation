@@ -297,6 +297,7 @@
         <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
         <button class="demo-tab" onclick="switchTab('construction',this)">🏗 Construction</button>
         <button class="demo-tab" onclick="switchTab('lawfirm',this)">⚖️ Law Firms</button>
+        <button class="demo-tab" onclick="switchTab('church',this)">✝️ Churches</button>
       </div>
 
       <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid">
@@ -495,6 +496,28 @@
           '✦ Avg Hourly Rate:     $377',
           '─────────────────────────────────────────',
           '✓ Report ready for billing department',
+        ]
+      },
+      church: {
+        headers: ['Member', 'Type', 'Amount', 'Date'],
+        rows: [
+          ['Garcia Family', 'Tithe', '$400', 'Mar 2'],
+          ['D. Williams', 'Offering', '$75', 'Mar 2'],
+          ['Johnson Family', 'Tithe', '$600', 'Mar 9'],
+          ['M. Reyes', 'Missions Fund', '$150', 'Mar 9'],
+          ['Smith Family', 'Tithe', '$520', 'Mar 16'],
+        ],
+        output: [
+          '📋 Monthly Giving Report — March 2025',
+          '──────────────────────────────────────',
+          '✦ Total Contributions:  $1,745',
+          '✦ Total Tithes:         $1,520',
+          '✦ Total Offerings:      $225',
+          '✦ Missions Fund:        $150',
+          '✦ Contributing Members: 5',
+          '✦ Avg Gift per Member:  $349',
+          '──────────────────────────────────────',
+          '✓ Report ready for pastor & treasurer',
         ]
       }
     };
