@@ -273,6 +273,23 @@
       white-space:nowrap;
     }
 
+    .first-call-steps{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .first-call-steps span{
+      font-size:14px;
+      color:#cbd5e1;
+    }
+
+    .step-num{
+      color:#93c5fd;
+      font-weight:700;
+      margin-right:4px;
+    }
+
     .note-box{
       margin-top:20px;
       padding:14px 16px;
@@ -483,7 +500,12 @@
   <section class="section">
     <div class="wrap">
       <div class="first-call-box">
-        <strong>First call:</strong> we review your current workflow, identify the best automation target, and decide whether a simple fix or full build makes sense.
+        <strong>First call:</strong>
+        <span class="first-call-steps">
+          <span><span class="step-num">1.</span> Review your current workflow</span>
+          <span><span class="step-num">2.</span> Identify the best automation target</span>
+          <span><span class="step-num">3.</span> Decide: simple fix or full build</span>
+        </span>
       </div>
     </div>
     <div class="wrap grid">
