@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights | RS Automation EP</title>
+  <meta
+    name="description"
+    content="Practical automation insights for small teams that want to stop doing things the hard way."
+  />
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .wrap{
+      max-width:1080px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      position:relative;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
+    }
+
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:58px;
+    }
+
+    .brand{
+      font-size:1.1rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
+    }
+
+    .brand span{
+      color:var(--brand);
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      background:#f1f5f9;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:4px;
+    }
+
+    .menu a:not(.btn){
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:7px 13px;
+      border-radius:8px;
+      transition:.15s ease;
+    }
+
+    .menu a:not(.btn):hover{
+      background:#fff;
+      color:var(--text);
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+
+    .btn-primary{
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
+    }
+
+    .btn-primary:hover{
+      background:var(--brand-dark);
+      color:#fff !important;
+    }
+
+    .btn-secondary{
+      background:#fff;
+      color:var(--text);
+    }
+
+    .btn-secondary:hover{
+      border-color:#c6d2ea;
+      background:#fdfefe;
+    }
+
+    .nav-cta{
+      padding:8px 16px;
+      font-size:14px;
+      border-radius:8px;
+    }
+
+    .hero{
+      padding:72px 0 48px;
+      background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:46px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      max-width:900px;
+    }
+
+    .lead{
+      margin:0;
+      font-size:20px;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    h2{
+      margin:0 0 14px;
+      font-size:30px;
+      line-height:1.15;
+      letter-spacing:-0.03em;
+    }
+
+    h3{
+      margin:0 0 10px;
+      font-size:20px;
+      line-height:1.2;
+    }
+
+    p{
+      margin:0 0 14px;
+      color:var(--muted);
+    }
+
+    .section{
+      padding:56px 0 72px;
+    }
+
+    .insights-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+    }
+
+    .insight-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .insight-card h3{
+      margin:0 0 12px;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--text);
+    }
+
+    .insight-card p{
+      margin:0 0 20px;
+      color:var(--muted);
+      font-size:15px;
+      flex:1;
+    }
+
+    .read-more{
+      display:inline-block;
+      font-size:14px;
+      font-weight:700;
+      color:var(--brand);
+      transition:.15s ease;
+    }
+
+    .read-more:hover{
+      color:var(--brand-dark);
+    }
+
+    .footer{
+      padding:28px 0 40px;
+      color:#64748b;
+      border-top:1px solid #e8edf7;
+      margin-top:8px;
+      font-size:14px;
+    }
+
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:6px;
+    }
+
+    .hamburger span{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--text);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+
+    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 860px){
+      .insights-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hamburger{
+        display:flex;
+      }
+
+      .menu{
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        border-radius:0;
+        padding:8px 20px 16px;
+        box-shadow:0 8px 24px rgba(15,23,42,.1);
+        z-index:99;
+      }
+
+      .menu.open{
+        display:flex;
+      }
+
+      .menu a:not(.btn){
+        padding:13px 4px;
+        border-radius:0;
+        border-bottom:1px solid #f1f5f9;
+        font-size:15px;
+      }
+
+      .nav-cta{
+        margin-top:10px;
+        text-align:center;
+        border-bottom:none !important;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      h2{
+        font-size:26px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    const hb = document.getElementById('hamburger');
+    const nm = document.getElementById('nav-menu');
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      nm.classList.toggle('open');
+    });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      nm.classList.remove('open');
+    }));
+  </script>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Insights</div>
+        <h1>Automation Insights</h1>
+        <p class="lead">
+          Practical ideas for small teams that want to stop doing things the hard way.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="insights-grid">
+
+          <div class="insight-card">
+            <h3>How to Know If Your Excel Workflow Is Ready for Automation</h3>
+            <p>Five signs your spreadsheet process is costing more time than it should.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+
+          <div class="insight-card">
+            <h3>What Reporting Automation Actually Looks Like for a Small Team</h3>
+            <p>A walkthrough of turning a weekly manual report into a one-click process.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+
+          <div class="insight-card">
+            <h3>Why El Paso Small Businesses Are Automating — and How to Start</h3>
+            <p>Local companies are saving hours every week. Here's how they're doing it.</p>
+            <a href="#" class="read-more">Read more →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap" style="text-align:center;">
+        © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for small teams &amp; professionals
+    </div>
+  </footer>
+</body>
+</html>

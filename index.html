@@ -176,125 +176,6 @@
       max-width:760px;
     }
 
-    .hero-card{
-      background:linear-gradient(180deg, var(--dark) 0%, var(--dark-2) 100%);
-      color:#dbeafe;
-      border-radius:18px;
-      padding:24px;
-      box-shadow:0 18px 40px rgba(15,23,42,.18);
-      border:1px solid rgba(255,255,255,.06);
-    }
-
-    .terminal-top{
-      font-size:13px;
-      color:#93c5fd;
-      margin-bottom:16px;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-
-    .terminal-dots{
-      display:flex;
-      gap:5px;
-    }
-
-    .terminal-dots span{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      display:inline-block;
-    }
-
-    .terminal-dots span:nth-child(1){ background:#ff5f57; }
-    .terminal-dots span:nth-child(2){ background:#febc2e; }
-    .terminal-dots span:nth-child(3){ background:#28c840; }
-
-    @keyframes blink{
-      0%,100%{ opacity:1; }
-      50%{ opacity:0; }
-    }
-
-    @keyframes fadeSlideIn{
-      from{ opacity:0; transform:translateY(6px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
-
-    @keyframes typing{
-      from{ width:0; }
-      to{ width:100%; }
-    }
-
-    @keyframes progressBar{
-      from{ width:0%; }
-      to{ width:100%; }
-    }
-
-    .cursor{
-      display:inline-block;
-      width:9px;
-      height:1.1em;
-      background:#86efac;
-      vertical-align:text-bottom;
-      animation:blink 1s step-end infinite;
-      margin-left:2px;
-    }
-
-    .terminal-line{
-      opacity:0;
-      animation:fadeSlideIn .4s ease forwards;
-    }
-
-    .terminal-line:nth-child(1){ animation-delay:.3s; }
-    .terminal-line:nth-child(2){ animation-delay:1.2s; }
-    .terminal-line:nth-child(3){ animation-delay:1.9s; }
-    .terminal-line:nth-child(4){ animation-delay:2.5s; }
-    .terminal-line:nth-child(5){ animation-delay:3.1s; }
-    .terminal-line:nth-child(6){ animation-delay:3.5s; }
-    .terminal-line:nth-child(7){ animation-delay:3.9s; }
-    .terminal-line:nth-child(8){ animation-delay:4.3s; }
-
-    .progress-wrap{
-      opacity:0;
-      animation:fadeSlideIn .4s ease forwards;
-      animation-delay:1.0s;
-      margin:4px 0;
-    }
-
-    .progress-track{
-      background:rgba(255,255,255,.1);
-      border-radius:4px;
-      height:5px;
-      overflow:hidden;
-      width:100%;
-    }
-
-    .progress-fill{
-      height:100%;
-      border-radius:4px;
-      background:linear-gradient(90deg, #3b82f6, #86efac);
-      width:0%;
-      animation:progressBar 1.2s ease forwards;
-      animation-delay:1.1s;
-    }
-
-    .code{
-      font-family:"Courier New", monospace;
-      font-size:14px;
-      line-height:1.75;
-      color:#dbeafe;
-    }
-
-    .code .muted{
-      color:#93a7c7;
-    }
-
-    .code .ok{
-      color:#86efac;
-      font-weight:700;
-    }
-
     .section{
       padding:72px 0;
     }
@@ -312,19 +193,6 @@
       line-height:1.2;
     }
 
-    .section-copy{
-      margin:0 0 30px;
-      font-size:18px;
-      color:var(--muted);
-      max-width:760px;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:20px;
-    }
-
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -336,89 +204,6 @@
     .card p{
       margin:0;
       color:var(--muted);
-    }
-
-    .outcome-card{
-      border-left:3px solid var(--brand);
-      display:flex;
-      flex-direction:row;
-      align-items:center;
-      gap:16px;
-    }
-
-    .outcome-icon{
-      font-size:1.4rem;
-      width:40px;
-      height:40px;
-      background:var(--soft);
-      border-radius:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-shrink:0;
-    }
-
-    .outcome-text{
-      margin:0 !important;
-      font-size:15px !important;
-      font-weight:600 !important;
-      font-style:italic;
-      color:var(--muted) !important;
-      line-height:1.5;
-    }
-
-    .problem-grid{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:20px;
-    }
-
-    .problem{
-      background:#fff;
-      border:1px solid #fecaca;
-      border-left:5px solid #ef4444;
-      border-radius:14px;
-      padding:20px;
-      color:#7f1d1d;
-    }
-
-    .problem strong{
-      display:block;
-      margin-bottom:8px;
-      color:#991b1b;
-    }
-
-    .problem strong::before{
-      content:'✕  ';
-      color:#ef4444;
-      font-weight:900;
-    }
-
-    .solution{
-      background:#fff;
-      border:1px solid #bbf7d0;
-      border-left:5px solid #22c55e;
-      border-radius:14px;
-      padding:22px;
-      box-shadow:0 4px 16px rgba(34,197,94,.06);
-    }
-
-    .solution h3{
-      margin:0 0 8px;
-      font-size:18px;
-      color:#14532d;
-    }
-
-    .solution h3::before{
-      content:'✓  ';
-      color:#22c55e;
-      font-weight:900;
-    }
-
-    .solution p{
-      margin:0;
-      color:#166534;
-      font-size:15px;
     }
 
     .cta{
@@ -518,9 +303,7 @@
         border-bottom:none !important;
       }
 
-      .hero-grid,
-      .grid-3,
-      .problem-grid{
+      .hero-grid{
         grid-template-columns:1fr;
       }
 
@@ -554,8 +337,9 @@
       <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
-        <a class="btn btn-primary nav-cta" href="contact.html">Show Me Your Excel Problem</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
       </nav>
     </div>
   </header>
@@ -606,7 +390,7 @@
           </div>
 
           <div class="hero-btns" style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-            <a href="contact.html" style="display:inline-block; padding:14px 24px; background:#2563eb; color:#fff; border-radius:12px; font-weight:700; text-decoration:none; transition:.2s ease;">Get in Touch</a>
+            <a href="contact.html" style="display:inline-block; padding:14px 24px; background:#2563eb; color:#fff; border-radius:12px; font-weight:700; text-decoration:none; transition:.2s ease;">Show Me Your Excel Problem</a>
             <a href="use-cases.html" style="display:inline-block; padding:14px 24px; background:rgba(255,255,255,.08); color:#e2e8f0; border:1px solid rgba(255,255,255,.15); border-radius:12px; font-weight:700; text-decoration:none; transition:.2s ease;">See Use Cases</a>
           </div>
 
@@ -659,12 +443,6 @@
       }
       .flyer-grid > div:last-child{
         display:none !important;
-      }
-      .what-grid{
-        grid-template-columns:1fr !important;
-      }
-      .outcome-grid{
-        grid-template-columns:1fr !important;
       }
     }
   </style>
@@ -823,143 +601,13 @@
     startAutoRotate();
   </script>
 
-  <div class="mobile-quote" style="display:none; flex-direction:column; align-items:center; text-align:center; padding:48px 24px; background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);">
-    <img src="images/image-2.png" alt="Ricardo Ramirez Jr" style="width:110px; height:110px; border-radius:50%; object-fit:cover; object-position:top; margin-bottom:24px; border:2px solid rgba(255,255,255,.15); box-shadow:0 8px 24px rgba(0,0,0,.4);">
-    <blockquote style="margin:0 0 16px; font-size:18px; line-height:1.6; color:#e2e8f0; font-style:italic; max-width:320px;">
-      "You should spend your time on the work you love — not on spreadsheets."
-    </blockquote>
-    <p style="margin:0; font-size:13px; font-weight:700; color:#93c5fd; letter-spacing:.04em;">— Founder, Ricardo Ramirez Jr. MBA, MSBA</p>
-  </div>
-
-  <style>
-    @media(max-width:860px){
-      .mobile-quote{ display:flex !important; }
-    }
-  </style>
-
-  <section class="section">
-    <div class="wrap">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; margin-bottom:40px;" class="what-grid">
-        <div>
-          <div class="eyebrow">What I build</div>
-          <h2>Custom tools that make better decisions automatically</h2>
-          <p class="section-copy" style="margin-bottom:0;">
-            I design practical tools around the way your team already works: spreadsheets, folders, reports, forms, and repetitive review steps.
-          </p>
-        </div>
-        <div class="hero-card">
-          <div class="terminal-top">
-            <div class="terminal-dots"><span></span><span></span><span></span></div>
-            rsautomationep terminal
-          </div>
-          <div class="code">
-            <div class="terminal-line"><span class="muted">$</span> run decision-engine --workflow weekly_reporting<span class="cursor"></span></div>
-            <div class="progress-wrap">
-              <div class="progress-track"><div class="progress-fill"></div></div>
-            </div>
-            <div class="terminal-line ok">✓ files ingested</div>
-            <div class="terminal-line ok">✓ validation checks passed</div>
-            <div class="terminal-line ok">✓ output generated</div>
-            <br />
-            <div class="terminal-line">time saved: <span class="ok">6.5 hours / week</span></div>
-            <div class="terminal-line">error exposure: <span class="ok">reduced</span></div>
-            <div class="terminal-line">status: <span class="ok">complete ✦</span></div>
-          </div>
-        </div>
-      </div>
-
-  <script>
-    (function(){
-      const CYCLE = 16000; // total cycle length in ms (animation finishes ~4.7s, pause rest)
-      function restartTerminal(){
-        const lines = document.querySelectorAll('.terminal-line');
-        const bar   = document.querySelector('.progress-fill');
-        const wrap  = document.querySelector('.progress-wrap');
-
-        // Strip animations by removing/re-adding class
-        lines.forEach(el => {
-          el.classList.remove('terminal-line');
-          void el.offsetWidth; // force reflow
-          el.classList.add('terminal-line');
-        });
-
-        if(bar){
-          bar.style.animation = 'none';
-          void bar.offsetWidth;
-          bar.style.animation = '';
-        }
-        if(wrap){
-          wrap.style.animation = 'none';
-          void wrap.offsetWidth;
-          wrap.style.animation = '';
-        }
-      }
-      setInterval(restartTerminal, CYCLE);
-    })();
-  </script>
-
-      <div class="outcome-grid" style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
-        <div class="card outcome-card">
-          <div class="outcome-icon">🕒</div>
-          <p class="outcome-text">"Turn a 2-hour weekly report into a 1-click process"</p>
-        </div>
-        <div class="card outcome-card">
-          <div class="outcome-icon">🔍</div>
-          <p class="outcome-text">"Automatically flag missing fields and bad inputs"</p>
-        </div>
-        <div class="card outcome-card">
-          <div class="outcome-icon">📊</div>
-          <p class="outcome-text">"Generate clean outputs from messy spreadsheets"</p>
-        </div>
-        <div class="card outcome-card">
-          <div class="outcome-icon">🎯</div>
-          <p class="outcome-text">"Score and route leads consistently"</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="background:var(--soft);">
-    <div class="wrap">
-      <div class="eyebrow">Why it matters</div>
-      <h2>Where the hours go — and how to get them back.</h2>
-      <p class="section-copy">
-        Most teams don't need more software. They need fewer manual handoffs, cleaner logic, and repeatable workflows — built around what they already use.
-      </p>
-
-      <div class="problem-grid" style="margin-bottom:28px;">
-        <div class="problem">
-          <strong>Reports built by hand, every week</strong>
-          Hours of copying, pasting, and fixing the same files — automated away.
-        </div>
-        <div class="problem">
-          <strong>Inconsistent decisions</strong>
-          Rules living in people's heads get replaced with one traceable system.
-        </div>
-        <div class="problem">
-          <strong>No visibility into what's happening</strong>
-          Leaders get a clear, real-time picture without chasing updates.
-        </div>
-        <div class="problem">
-          <strong>Good people doing low-value work</strong>
-          Operational drag eliminated so your team can focus on what matters.
-        </div>
-      </div>
-
-      <div class="grid-3">
-        <div class="solution">
-          <h3>Practical</h3>
-          <p>Built around the tools you already use — no platform overhaul required.</p>
-        </div>
-        <div class="solution">
-          <h3>Controlled</h3>
-          <p>Logic is explicit, traceable, and easy to maintain.</p>
-        </div>
-        <div class="solution">
-          <h3>Lean</h3>
-          <p>Designed for small teams that need leverage, not enterprise overhead.</p>
-        </div>
-      </div>
+  <section style="padding:56px 0; background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);">
+    <div class="wrap" style="max-width:760px; text-align:center;">
+      <div class="eyebrow" style="color:#93c5fd;">Social Proof</div>
+      <blockquote style="margin:0 0 20px; font-size:18px; line-height:1.8; color:#cbd5e1; font-style:italic;">
+        "Ricardo proactively offers analysis that creates real insight into how a process is performing — and he's always looking for ways to automate data collection so less time is spent pulling data and more time is spent understanding it."
+      </blockquote>
+      <cite style="font-size:14px; font-weight:700; color:#93c5fd; font-style:normal;">— Senior Director, USAA Bank</cite>
     </div>
   </section>
 
