@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why El Paso Small Businesses Are Automating — and How to Start | RS Automation EP</title>
+  <meta name="description" content="Local El Paso companies are saving hours every week with simple automation. Here's how they're doing it.">
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+
+    .wrap{
+      max-width:1020px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      position:relative;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:58px;
+    }
+    .brand{
+      font-size:1.1rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .brand span{ color:var(--brand); }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      background:#f1f5f9;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:4px;
+    }
+    .menu a:not(.btn){
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:7px 13px;
+      border-radius:8px;
+      transition:.15s ease;
+    }
+    .menu a:not(.btn):hover{ background:#fff; color:var(--text); }
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
+    }
+    .btn-primary:hover{ background:var(--brand-dark); color:#fff !important; }
+    .nav-cta{
+      padding:8px 16px;
+      font-size:14px;
+      border-radius:8px;
+    }
+
+    /* HAMBURGER */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:6px;
+    }
+    .hamburger span{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--text);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    /* FOOTER */
+    footer{
+      padding:28px 0 40px;
+      color:#64748b;
+      border-top:1px solid #e8edf7;
+      font-size:14px;
+    }
+
+    /* ARTICLE */
+    .article-wrapper{
+      max-width:680px;
+      margin:0 auto;
+      padding:4rem 1.5rem 6rem;
+    }
+    .article-wrapper .label{
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
+      margin-bottom:.5rem;
+      display:inline-block;
+    }
+    .article-wrapper h1{
+      font-size:2rem;
+      line-height:1.3;
+      margin-bottom:1rem;
+      color:var(--text);
+      letter-spacing:-0.02em;
+    }
+    .article-wrapper .subtitle{
+      font-size:1.1rem;
+      color:var(--muted);
+      margin-bottom:2.5rem;
+    }
+    .article-wrapper h2{
+      font-size:1.25rem;
+      margin:2.5rem 0 1rem;
+      color:var(--text);
+      letter-spacing:-0.01em;
+    }
+    .article-wrapper p{ margin-bottom:1.25rem; color:var(--muted); }
+    .article-wrapper strong{ color:var(--text); }
+    .back-link{
+      display:inline-block;
+      margin-bottom:2rem;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+    .back-link:hover{ color:var(--brand); }
+
+    /* CTA BOX */
+    .cta-box{
+      margin-top:3rem;
+      padding:2rem;
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      text-align:center;
+    }
+    .cta-box p{ color:var(--muted); margin-bottom:1rem; }
+    .cta-box a{
+      display:inline-block;
+      padding:12px 28px;
+      background:var(--brand);
+      color:#fff !important;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      transition:.2s ease;
+    }
+    .cta-box a:hover{ background:var(--brand-dark); }
+
+    /* BEFORE/AFTER (used in reporting article) */
+    .before-after{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+      margin:1.5rem 0 2rem;
+    }
+    .before-after .col{
+      padding:1.25rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+    }
+    .before-after .col h3{
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:.75rem;
+    }
+    .before-after .col.before h3{ color:#ef4444; }
+    .before-after .col.after h3{ color:#22c55e; }
+    .before-after .col p{ font-size:.95rem; margin-bottom:.5rem; }
+
+    @media(max-width:860px){
+      .hamburger{ display:flex; }
+      .menu{
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        border-radius:0;
+        padding:8px 20px 16px;
+        box-shadow:0 8px 24px rgba(15,23,42,.1);
+        z-index:99;
+      }
+      .menu.open{ display:flex; }
+      .menu a:not(.btn){
+        padding:13px 4px;
+        border-radius:0;
+        border-bottom:1px solid #f1f5f9;
+        font-size:15px;
+      }
+      .nav-cta{
+        margin-top:10px;
+        text-align:center;
+        border-bottom:none !important;
+      }
+      .before-after{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    const hb = document.getElementById('hamburger');
+    const nm = document.getElementById('nav-menu');
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      nm.classList.toggle('open');
+    });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      nm.classList.remove('open');
+    }));
+  </script>
+
+  <div class="article-wrapper">
+
+    <a href="insights.html" class="back-link">← Back to Insights</a>
+
+    <div class="label">Insights</div>
+    <h1>Why El Paso Small Businesses Are Automating — and How to Start</h1>
+    <p class="subtitle">Local companies are saving hours every week. Here's how they're doing it.</p>
+
+    <p>El Paso runs on small businesses, nonprofits, and local organizations. Construction firms managing bids across multiple projects. Law offices tracking case deadlines in spreadsheets. Churches coordinating volunteers, donations, and events with tools held together by good intentions and a lot of manual work.</p>
+
+    <p>These organizations don't have IT departments. They don't have six-figure software budgets. What they have is people spending hours every week on repetitive tasks that follow the same pattern, every time. And more and more of them are realizing that's exactly the kind of work a simple automation can handle.</p>
+
+    <h2>This isn't about AI hype — it's about getting hours back</h2>
+    <p>The automation that matters most for small teams isn't flashy. It's not a chatbot or a machine learning model. It's taking the spreadsheet report your office manager rebuilds every Friday and turning it into something that runs itself. It's making sure incoming leads get scored and routed the same way every time, instead of depending on whoever checks the inbox first. It's catching data entry mistakes before they end up in a board report or a client invoice.</p>
+
+    <p>The common thread is this: <strong>if your team follows the same steps to produce the same kind of output on a regular cycle, that process can almost certainly be automated</strong> — without replacing the tools you already use.</p>
+
+    <h2>What this looks like in El Paso</h2>
+    <p>The types of workflows that come up again and again locally tend to fall into a few buckets:</p>
+
+    <p><strong>Nonprofits and churches</strong> assembling reports for boards, grantors, or dioceses — pulling numbers from multiple sources, reformatting, and reviewing before every meeting or deadline.</p>
+
+    <p><strong>Construction and trades companies</strong> tracking bids, job costing, and subcontractor documentation across spreadsheets that were built on the fly and never cleaned up.</p>
+
+    <p><strong>Law firms and professional offices</strong> managing intake, case tracking, or billing review in Excel because the practice management software doesn't do exactly what they need.</p>
+
+    <p><strong>Small businesses of all kinds</strong> running weekly or monthly processes that take 1–4 hours of someone's time, every cycle, with no room for error.</p>
+
+    <p>None of these need a platform migration. They need the process they already have to work faster, cleaner, and without babysitting.</p>
+
+    <h2>How to start</h2>
+    <p>You don't need to automate everything. Start with one process — ideally the one your team repeats most often, spends the most time on, or has the highest cost when it goes wrong.</p>
+
+    <p>Ask yourself three questions:</p>
+    <p><strong>Does it follow the same steps every time?</strong> If yes, those steps can be scripted.</p>
+    <p><strong>Does it use files or data that already exist somewhere?</strong> If yes, the inputs are ready.</p>
+    <p><strong>Does someone on your team dread doing it?</strong> If yes, you've found your first automation target.</p>
+
+    <p>From there, it's a conversation — not a sales pitch. Walk through the workflow, identify where the time goes, and decide whether it's a quick fix or a bigger build. Most first projects take days, not months, and cost a fraction of what people expect.</p>
+
+    <h2>El Paso deserves better tools</h2>
+    <p>The businesses and organizations here do meaningful work — serving clients, building things, supporting communities. The time they spend wrestling with spreadsheets and manual processes is time they're not spending on that work. Automation isn't about replacing people. It's about making sure the people you have can focus on what actually matters.</p>
+
+    <div class="cta-box">
+      <p>Ready to stop doing it the hard way?</p>
+      <a href="contact.html">Show Me Your Excel Problem</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="wrap" style="text-align:center;">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for  small teams & professionals
+    </div>
+  </footer>
+
+</body>
+</html>

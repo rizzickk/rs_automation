@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Reporting Automation Actually Looks Like for a Small Team | RS Automation EP</title>
+  <meta name="description" content="A walkthrough of turning a weekly manual report into a one-click process — no new software required.">
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+
+    .wrap{
+      max-width:1020px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      position:relative;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:58px;
+    }
+    .brand{
+      font-size:1.1rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .brand span{ color:var(--brand); }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      background:#f1f5f9;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:4px;
+    }
+    .menu a:not(.btn){
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:7px 13px;
+      border-radius:8px;
+      transition:.15s ease;
+    }
+    .menu a:not(.btn):hover{ background:#fff; color:var(--text); }
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
+    }
+    .btn-primary:hover{ background:var(--brand-dark); color:#fff !important; }
+    .nav-cta{
+      padding:8px 16px;
+      font-size:14px;
+      border-radius:8px;
+    }
+
+    /* HAMBURGER */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:6px;
+    }
+    .hamburger span{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--text);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    /* FOOTER */
+    footer{
+      padding:28px 0 40px;
+      color:#64748b;
+      border-top:1px solid #e8edf7;
+      font-size:14px;
+    }
+
+    /* ARTICLE */
+    .article-wrapper{
+      max-width:680px;
+      margin:0 auto;
+      padding:4rem 1.5rem 6rem;
+    }
+    .article-wrapper .label{
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--brand);
+      margin-bottom:.5rem;
+      display:inline-block;
+    }
+    .article-wrapper h1{
+      font-size:2rem;
+      line-height:1.3;
+      margin-bottom:1rem;
+      color:var(--text);
+      letter-spacing:-0.02em;
+    }
+    .article-wrapper .subtitle{
+      font-size:1.1rem;
+      color:var(--muted);
+      margin-bottom:2.5rem;
+    }
+    .article-wrapper h2{
+      font-size:1.25rem;
+      margin:2.5rem 0 1rem;
+      color:var(--text);
+      letter-spacing:-0.01em;
+    }
+    .article-wrapper p{ margin-bottom:1.25rem; color:var(--muted); }
+    .article-wrapper strong{ color:var(--text); }
+    .back-link{
+      display:inline-block;
+      margin-bottom:2rem;
+      color:var(--muted);
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+    .back-link:hover{ color:var(--brand); }
+
+    /* CTA BOX */
+    .cta-box{
+      margin-top:3rem;
+      padding:2rem;
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      text-align:center;
+    }
+    .cta-box p{ color:var(--muted); margin-bottom:1rem; }
+    .cta-box a{
+      display:inline-block;
+      padding:12px 28px;
+      background:var(--brand);
+      color:#fff !important;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      transition:.2s ease;
+    }
+    .cta-box a:hover{ background:var(--brand-dark); }
+
+    /* BEFORE/AFTER (used in reporting article) */
+    .before-after{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.5rem;
+      margin:1.5rem 0 2rem;
+    }
+    .before-after .col{
+      padding:1.25rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--card);
+    }
+    .before-after .col h3{
+      font-size:.85rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:.75rem;
+    }
+    .before-after .col.before h3{ color:#ef4444; }
+    .before-after .col.after h3{ color:#22c55e; }
+    .before-after .col p{ font-size:.95rem; margin-bottom:.5rem; }
+
+    @media(max-width:860px){
+      .hamburger{ display:flex; }
+      .menu{
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        border-radius:0;
+        padding:8px 20px 16px;
+        box-shadow:0 8px 24px rgba(15,23,42,.1);
+        z-index:99;
+      }
+      .menu.open{ display:flex; }
+      .menu a:not(.btn){
+        padding:13px 4px;
+        border-radius:0;
+        border-bottom:1px solid #f1f5f9;
+        font-size:15px;
+      }
+      .nav-cta{
+        margin-top:10px;
+        text-align:center;
+        border-bottom:none !important;
+      }
+      .before-after{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    const hb = document.getElementById('hamburger');
+    const nm = document.getElementById('nav-menu');
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      nm.classList.toggle('open');
+    });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      nm.classList.remove('open');
+    }));
+  </script>
+
+  <div class="article-wrapper">
+
+    <a href="insights.html" class="back-link">← Back to Insights</a>
+
+    <div class="label">Insights</div>
+    <h1>What Reporting Automation Actually Looks Like for a Small Team</h1>
+    <p class="subtitle">A walkthrough of turning a weekly manual report into a one-click process.</p>
+
+    <p>When people hear "automation," they tend to picture one of two things: either a massive enterprise rollout with consultants and dashboards, or some vague AI magic that's too abstract to act on. The reality — especially for small teams — is a lot more grounded than either of those.</p>
+
+    <p>Here's what a typical reporting automation project actually looks like from start to finish.</p>
+
+    <h2>The starting point: a process that works but hurts</h2>
+    <p>Let's say a nonprofit tracks grant-funded program activity across three departments. Every month, the operations manager pulls data from separate spreadsheets, cleans it up, reformats it into a board-ready report, double-checks the numbers, and emails it out. Total time: about three hours per cycle. It works. But it's tedious, error-prone, and it pulls a skilled person away from higher-value work every single month.</p>
+
+    <h2>Step 1: Map the workflow as it exists</h2>
+    <p>The first thing I do is understand exactly how the process runs today — not how it should run in theory, but what actually happens. Where do the source files live? What gets copied where? Which columns matter? What are the formatting rules? What gets checked before it goes out? This usually takes one call and a look at the actual files. No guessing.</p>
+
+    <h2>Step 2: Build the automation around those same files</h2>
+    <p>I don't replace your tools. I build a layer on top of them. The same spreadsheets, the same folder structure, the same output format. The difference is that instead of a person doing 45 manual steps, a script handles the data pull, the cleanup, the validation, and the formatting. The output looks exactly like what you were already producing — because your board or your funder already expects that format.</p>
+
+    <h2>Step 3: Add validation so errors get caught, not shipped</h2>
+    <p>This is where automation earns its keep. Built-in checks flag things like missing fields, totals that don't add up, or data that falls outside expected ranges. Instead of hoping someone catches a mistake during review, the system surfaces problems before the report is even generated.</p>
+
+    <h2>Step 4: Hand it off</h2>
+    <p>The final deliverable is something your team can run without me. One click, one output. I walk the team through how it works, what to do if something looks wrong, and how to adjust if the process changes. No ongoing dependency.</p>
+
+    <h2>The before and after</h2>
+
+    <div class="before-after">
+      <div class="col before">
+        <h3>Before</h3>
+        <p>3 hours of manual work per cycle</p>
+        <p>Errors caught after the fact (or not at all)</p>
+        <p>One person bottleneck</p>
+        <p>Dreaded by whoever draws the short straw</p>
+      </div>
+      <div class="col after">
+        <h3>After</h3>
+        <p>One click, same output</p>
+        <p>Validation built in</p>
+        <p>Anyone on the team can run it</p>
+        <p>Hours returned to real work every month</p>
+      </div>
+    </div>
+
+    <h2>That's it. No platform. No subscription. No overhaul.</h2>
+    <p>Most small teams don't need more software. They need the process they already have to run without eating someone's afternoon. That's what reporting automation actually looks like — not a product demo, just a better version of what you're already doing.</p>
+
+    <div class="cta-box">
+      <p>Have a report your team rebuilds by hand every week or month?</p>
+      <a href="contact.html">Show Me Your Excel Problem</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="wrap" style="text-align:center;">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for  small teams & professionals
+    </div>
+  </footer>
+
+</body>
+</html>
