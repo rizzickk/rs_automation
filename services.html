@@ -385,9 +385,7 @@
 
       <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
-        <a href="use-cases.html">Use Cases</a>
         <a href="services.html">Services</a>
-        <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
         <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
       </nav>
@@ -414,6 +412,65 @@
       <p class="lead">
         Pick the package that fits your situation — or just reach out and we'll figure it out together.
       </p>
+    </div>
+  </section>
+
+  <style>
+    .demo-tab{ padding:10px 20px; border-radius:10px; border:1px solid var(--line); background:#fff; font-weight:700; font-size:14px; cursor:pointer; transition:.2s ease; color:var(--muted); }
+    .demo-tab:hover{ border-color:#93b4f0; color:var(--text); }
+    .demo-tab.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
+    .demo-table-inner{ width:100%; border-collapse:collapse; font-size:13px; }
+    .demo-table-inner th{ background:var(--soft); padding:10px 14px; text-align:left; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); border-bottom:1px solid var(--line); }
+    .demo-table-inner td{ padding:9px 14px; border-bottom:1px solid #f0f4fb; color:var(--text); }
+    .demo-table-inner tr:last-child td{ border-bottom:none; }
+    .demo-table-inner tr:hover td{ background:#f7f9ff; }
+    @keyframes flowPulse{ 0%{ opacity:.2; transform:translateX(0); } 50%{ opacity:1; transform:translateX(4px); } 100%{ opacity:.2; transform:translateX(0); } }
+    .flow-arrow{ display:flex; align-items:center; gap:3px; }
+    .flow-dot{ width:6px; height:6px; border-radius:50%; background:var(--brand); animation:flowPulse 1.2s ease infinite; }
+    .flow-dot:nth-child(2){ animation-delay:.2s; }
+    .flow-dot:nth-child(3){ animation-delay:.4s; }
+    @keyframes reportFadeIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:translateY(0); } }
+    .report-line{ display:block; opacity:0; animation:reportFadeIn .3s ease forwards; }
+    .demo-content{ transition: opacity .4s ease; }
+    @media(max-width:860px){ .demo-grid{ grid-template-columns:1fr !important; } .flow-arrow{ transform:rotate(90deg); margin:8px auto; } }
+  </style>
+
+  <section style="padding:56px 0; background:var(--soft);">
+    <div class="wrap">
+      <div class="eyebrow">Live Demo</div>
+      <h2 style="margin:0 0 8px;">See it in action</h2>
+      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Click on an industry to see how raw data becomes a clean report.</p>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
+        <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
+        <button class="demo-tab" onclick="switchTab('construction',this)">🏗 Construction</button>
+        <button class="demo-tab" onclick="switchTab('lawfirm',this)">⚖️ Law Firms</button>
+        <button class="demo-tab" onclick="switchTab('church',this)">✝️ Churches</button>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid demo-content">
+        <div>
+          <div style="font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--brand); margin-bottom:10px;">Input Table</div>
+          <div style="background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 4px 16px rgba(15,23,42,.06);">
+            <div id="demo-table"></div>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:80px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">Automation</div>
+          <div class="flow-arrow">
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <div class="flow-dot"></div>
+            <span style="font-size:22px; color:var(--brand);">→</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#16a34a; margin-bottom:10px;">Generated Report</div>
+          <div style="background:#0f172a; border-radius:14px; padding:20px; box-shadow:0 4px 16px rgba(15,23,42,.14); min-height:180px;">
+            <div id="demo-output" style="font-family:'Courier New',monospace; font-size:13px; line-height:1.8; color:#dbeafe;"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -488,9 +545,92 @@
 
   <footer>
     <div class="wrap" style="text-align:center;">
-      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for  small teams & professionals
+      © RS Automation EP · El Paso, Texas · Excel and reporting automation for small teams &amp; professionals
+      <br><a href="insights.html" style="color:#94a3b8; font-size:12px; margin-top:6px; display:inline-block;">Insights</a>
     </div>
   </footer>
+
+  <script>
+  const cases = {
+    nonprofit: {
+      headers: ['Donor', 'Amount', 'Date', 'Campaign'],
+      rows: [['Maria Lopez','$500','Mar 1','Spring Drive'],['James Hill','$250','Mar 3','General Fund'],['Ana Torres','$1,000','Mar 5','Spring Drive'],['Robert Kim','$150','Mar 7','Youth Program'],['Linda Chase','$750','Mar 9','Spring Drive']],
+      output: ['📋 Monthly Giving Summary — March 2025','─────────────────────────────────────','✦ Total Raised:        $2,650','✦ Total Donors:        5','✦ Top Campaign:        Spring Drive ($2,250)','✦ Largest Gift:        Ana Torres — $1,000','✦ Avg Gift Size:       $530','─────────────────────────────────────','✓ Report ready for board review']
+    },
+    construction: {
+      headers: ['Item', 'Qty', 'Unit Cost', 'Location'],
+      rows: [['Concrete Mix','40 bags','$12.00','Warehouse A'],['Steel Rebar','200 rods','$8.50','Site 3'],['Lumber 2x4','85 units','$6.25','Warehouse B'],['PVC Pipe','60 units','$4.00','Site 1'],['Drywall Sheet','120 units','$11.00','Warehouse A']],
+      output: ['📋 Weekly Inventory Report — Mar 10, 2025','─────────────────────────────────────────','✦ Total Items Tracked: 5 categories','✦ Total Inventory Value: $4,598.50','⚠ Low Stock Alert:     PVC Pipe (60 left)','⚠ Low Stock Alert:     Lumber 2x4 (85 left)','✦ Highest Value Item:  Drywall Sheet ($1,320)','─────────────────────────────────────────','✓ Report ready for site manager review']
+    },
+    lawfirm: {
+      headers: ['Client', 'Matter', 'Hours', 'Rate/hr'],
+      rows: [['Acme Corp','Contract Review','4.5h','$350'],['J. Rivera','Estate Planning','2.0h','$300'],['BuildCo LLC','Litigation Prep','6.0h','$400'],['M. Sanders','Family Law','3.5h','$275'],['NovaTech','IP Filing','5.0h','$425']],
+      output: ['📋 Weekly Billing Summary — Mar 10, 2025','─────────────────────────────────────────','✦ Total Hours Logged:  21.0h','✦ Total Billable Amount: $7,912.50','✦ Top Client:          BuildCo LLC ($2,400)','✦ Highest Rate:        NovaTech ($425/hr)','✦ Avg Hourly Rate:     $377','─────────────────────────────────────────','✓ Report ready for billing department']
+    },
+    church: {
+      headers: ['Member', 'Type', 'Amount', 'Date'],
+      rows: [['Garcia Family','Tithe','$400','Mar 2'],['D. Williams','Offering','$75','Mar 2'],['Johnson Family','Tithe','$600','Mar 9'],['M. Reyes','Missions Fund','$150','Mar 9'],['Smith Family','Tithe','$520','Mar 16']],
+      output: ['📋 Monthly Giving Report — March 2025','──────────────────────────────────────','✦ Total Contributions:  $1,745','✦ Total Tithes:         $1,520','✦ Total Offerings:      $225','✦ Missions Fund:        $150','✦ Contributing Members: 5','✦ Avg Gift per Member:  $349','──────────────────────────────────────','✓ Report ready for pastor & treasurer']
+    }
+  };
+
+  const tabKeys = ['nonprofit', 'construction', 'lawfirm', 'church'];
+  let currentTabIndex = 0;
+  let autoTimer = null;
+  let pauseTimer = null;
+
+  function switchTab(key, btn) {
+    document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    currentTabIndex = tabKeys.indexOf(key);
+    renderDemo(key);
+    clearTimeout(pauseTimer);
+    clearInterval(autoTimer);
+    pauseTimer = setTimeout(startAutoRotate, 10000);
+  }
+
+  function autoAdvance() {
+    const content = document.querySelector('.demo-content');
+    content.style.opacity = '0';
+    setTimeout(() => {
+      currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
+      const key = tabKeys[currentTabIndex];
+      const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
+      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderDemo(key);
+      content.style.opacity = '1';
+    }, 400);
+  }
+
+  function startAutoRotate() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(autoAdvance, 15000);
+  }
+
+  function renderDemo(key) {
+    const data = cases[key];
+    let tableHTML = '<table class="demo-table-inner"><thead><tr>';
+    data.headers.forEach(h => tableHTML += `<th>${h}</th>`);
+    tableHTML += '</tr></thead><tbody>';
+    data.rows.forEach(row => { tableHTML += '<tr>'; row.forEach(cell => tableHTML += `<td>${cell}</td>`); tableHTML += '</tr>'; });
+    tableHTML += '</tbody></table>';
+    document.getElementById('demo-table').innerHTML = tableHTML;
+    const out = document.getElementById('demo-output');
+    out.innerHTML = '';
+    data.output.forEach((line, i) => {
+      const span = document.createElement('span');
+      span.className = 'report-line';
+      span.style.animationDelay = (i * 0.12) + 's';
+      span.style.color = line.startsWith('⚠') ? '#fbbf24' : line.startsWith('✓') ? '#86efac' : '#dbeafe';
+      span.textContent = line;
+      out.appendChild(span);
+    });
+  }
+
+  renderDemo('nonprofit');
+  startAutoRotate();
+  </script>
 
 </body>
 </html>
