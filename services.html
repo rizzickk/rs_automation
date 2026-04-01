@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | RS Automation EP</title>
+  <meta name="description" content="Simple, straightforward Excel automation packages for small teams. Starting at $300. No jargon, no surprises." />
+  <style>
+    :root{
+      --bg:#f7f9fc;
+      --text:#0f172a;
+      --muted:#475569;
+      --line:#dbe3ef;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --brand-dark:#1d4ed8;
+      --soft:#eef3fb;
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{ text-decoration:none; color:inherit; }
+
+    .wrap{
+      max-width:1020px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      position:relative;
+      background:rgba(247,249,252,.88);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(219,227,239,.8);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:58px;
+    }
+    .brand{
+      font-size:1.1rem;
+      font-weight:800;
+      letter-spacing:-0.03em;
+      color:var(--text);
+      white-space:nowrap;
+    }
+    .brand span{ color:var(--brand); }
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:2px;
+      background:#f1f5f9;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:4px;
+    }
+    .menu a:not(.btn){
+      color:var(--muted);
+      font-weight:600;
+      font-size:14px;
+      padding:7px 13px;
+      border-radius:8px;
+      transition:.15s ease;
+    }
+    .menu a:not(.btn):hover{ background:#fff; color:var(--text); }
+    .menu a.active{ background:#fff; color:var(--text); }
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:12px;
+      font-weight:700;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+    .btn-primary{
+      background:var(--brand);
+      color:#fff !important;
+      border-color:var(--brand);
+    }
+    .btn-primary:hover{ background:var(--brand-dark); }
+    .nav-cta{
+      padding:8px 16px;
+      font-size:14px;
+      border-radius:8px;
+    }
+
+    /* HAMBURGER */
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:6px;
+    }
+    .hamburger span{
+      display:block;
+      width:22px;
+      height:2px;
+      background:var(--text);
+      border-radius:2px;
+      transition:.25s ease;
+    }
+    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2){ opacity:0; }
+    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
+    .hero{
+      padding:72px 0 56px;
+      background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);
+    }
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#93c5fd;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:44px;
+      line-height:1.08;
+      letter-spacing:-0.04em;
+      color:#fff;
+      max-width:700px;
+    }
+    .lead{
+      margin:0;
+      font-size:18px;
+      color:#94a3b8;
+      max-width:580px;
+    }
+
+    /* SECTION */
+    .section{ padding:64px 0 80px; }
+
+    /* SERVICE CARDS GRID */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+      margin-bottom:40px;
+    }
+
+    .service-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:32px 28px;
+      box-shadow:0 8px 32px rgba(15,23,42,.06);
+      display:flex;
+      flex-direction:column;
+      position:relative;
+    }
+
+    .service-card.featured{
+      border-color:var(--brand);
+      box-shadow:0 8px 32px rgba(37,99,235,.12);
+    }
+
+    .featured-badge{
+      position:absolute;
+      top:-12px;
+      left:50%;
+      transform:translateX(-50%);
+      background:var(--brand);
+      color:#fff;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      padding:4px 14px;
+      border-radius:20px;
+      white-space:nowrap;
+    }
+
+    .service-price{
+      font-size:2rem;
+      font-weight:800;
+      color:var(--brand);
+      letter-spacing:-0.03em;
+      margin-bottom:2px;
+    }
+
+    .service-price-note{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+
+    .service-name{
+      font-size:20px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:-0.02em;
+      margin:0 0 6px;
+    }
+
+    .service-divider{
+      border:none;
+      border-top:1px solid var(--line);
+      margin:20px 0;
+    }
+
+    .service-includes{
+      list-style:none;
+      padding:0;
+      margin:0 0 20px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+
+    .service-includes li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+
+    .service-includes li::before{
+      content:'✓';
+      color:var(--brand);
+      font-weight:800;
+      flex-shrink:0;
+      margin-top:1px;
+    }
+
+    .best-for{
+      font-size:13px;
+      color:var(--muted);
+      background:var(--soft);
+      border-radius:10px;
+      padding:10px 14px;
+      margin-bottom:20px;
+      line-height:1.5;
+    }
+
+    .best-for strong{
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .service-cta{
+      display:block;
+      text-align:center;
+      padding:13px;
+      background:var(--brand);
+      color:#fff !important;
+      border-radius:12px;
+      font-weight:700;
+      font-size:14px;
+      transition:.2s ease;
+      margin-top:auto;
+    }
+    .service-cta:hover{ background:var(--brand-dark); }
+
+    /* NOT SURE CARD */
+    .not-sure{
+      background:linear-gradient(135deg,#0f172a,#1e3a5f);
+      border-radius:20px;
+      padding:40px 44px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+    }
+
+    .not-sure h2{
+      margin:0 0 8px;
+      font-size:22px;
+      color:#fff;
+      letter-spacing:-0.02em;
+    }
+
+    .not-sure p{
+      margin:0;
+      color:#94a3b8;
+      font-size:16px;
+      max-width:520px;
+    }
+
+    .not-sure-cta{
+      display:inline-block;
+      padding:14px 28px;
+      background:#2563eb;
+      color:#fff !important;
+      border-radius:12px;
+      font-weight:700;
+      font-size:15px;
+      white-space:nowrap;
+      flex-shrink:0;
+      transition:.2s ease;
+    }
+    .not-sure-cta:hover{ background:#1d4ed8; }
+
+    /* FOOTER */
+    footer{
+      padding:28px 0 40px;
+      color:#64748b;
+      border-top:1px solid #e8edf7;
+      font-size:14px;
+    }
+
+    @media(max-width:860px){
+      .services-grid{
+        grid-template-columns:1fr;
+      }
+      .service-card.featured{
+        order:-1;
+      }
+      .not-sure{
+        flex-direction:column;
+        padding:32px 24px;
+        text-align:center;
+      }
+      .not-sure p{ max-width:100%; }
+      .hamburger{ display:flex; }
+      .menu{
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
+        background:#fff;
+        border-bottom:1px solid var(--line);
+        border-radius:0;
+        padding:8px 20px 16px;
+        box-shadow:0 8px 24px rgba(15,23,42,.1);
+        z-index:99;
+      }
+      .menu.open{ display:flex; }
+      .menu a:not(.btn){
+        padding:13px 4px;
+        border-radius:0;
+        border-bottom:1px solid #f1f5f9;
+        font-size:15px;
+      }
+      .nav-cta{
+        margin-top:10px;
+        text-align:center;
+        border-bottom:none !important;
+      }
+      h1{ font-size:36px; }
+      .lead{ font-size:17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a href="index.html" class="brand">RS <span>Automation EP</span></a>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+      </nav>
+    </div>
+  </header>
+
+  <script>
+    const hb = document.getElementById('hamburger');
+    const nm = document.getElementById('nav-menu');
+    hb.addEventListener('click', () => {
+      hb.classList.toggle('open');
+      nm.classList.toggle('open');
+    });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      hb.classList.remove('open');
+      nm.classList.remove('open');
+    }));
+  </script>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Services</div>
+      <h1>Straightforward pricing. No surprises.</h1>
+      <p class="lead">
+        Pick the package that fits your situation — or just reach out and we'll figure it out together.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="services-grid">
+
+        <!-- EXCEL CLEANUP -->
+        <div class="service-card">
+          <div class="service-name">Excel Cleanup</div>
+          <div class="service-price">$300</div>
+          <div class="service-price-note">starting price</div>
+          <hr class="service-divider" />
+          <ul class="service-includes">
+            <li>You send me your messy workbook</li>
+            <li>I consolidate scattered tabs and files into one clean workbook</li>
+            <li>Fix broken formulas and remove duplicates</li>
+            <li>Standardize formatting throughout</li>
+            <li>Hand back a clean, reusable template</li>
+          </ul>
+          <div class="best-for"><strong>Best for:</strong> anyone drowning in messy spreadsheets who just needs them cleaned up</div>
+          <a href="contact.html" class="service-cta">Get Started →</a>
+        </div>
+
+        <!-- REPORT AUTOMATION -->
+        <div class="service-card featured">
+          <div class="featured-badge">Most Common</div>
+          <div class="service-name">Report Automation</div>
+          <div class="service-price">$750</div>
+          <div class="service-price-note">starting price</div>
+          <hr class="service-divider" />
+          <ul class="service-includes">
+            <li>You have a report you rebuild by hand every week or month</li>
+            <li>I automate the data pulls, checks, and formatting</li>
+            <li>Your report runs in minutes instead of hours</li>
+            <li>Includes one round of revisions</li>
+          </ul>
+          <div class="best-for"><strong>Best for:</strong> teams rebuilding the same report every cycle and losing hours doing it</div>
+          <a href="contact.html" class="service-cta">Get Started →</a>
+        </div>
+
+        <!-- CUSTOM SYSTEM BUILD -->
+        <div class="service-card">
+          <div class="service-name">Custom System Build</div>
+          <div class="service-price">$1,500</div>
+          <div class="service-price-note">starting price</div>
+          <hr class="service-divider" />
+          <ul class="service-includes">
+            <li>You have a whole workflow buried in spreadsheets, emails, and manual steps</li>
+            <li>I redesign it into one clean, automated system</li>
+            <li>Includes documentation so your team can run it without me</li>
+            <li>Includes a walkthrough session on handoff</li>
+          </ul>
+          <div class="best-for"><strong>Best for:</strong> businesses with a process that keeps eating time — every week, every month</div>
+          <a href="contact.html" class="service-cta">Get Started →</a>
+        </div>
+
+      </div>
+
+      <!-- NOT SURE -->
+      <div class="not-sure">
+        <div>
+          <h2>Not sure what you need?</h2>
+          <p>No pressure — let's just talk about what's slowing you down. One conversation is usually enough to figure out whether it's a quick fix or something bigger.</p>
+        </div>
+        <a href="contact.html" class="not-sure-cta">Show Me Your Excel Problem</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="text-align:center;">
+      © RS Automation EP · El Paso, Texas · Decision engines and workflow automation for  small teams & professionals
+    </div>
+  </footer>
+
+</body>
+</html>
