@@ -4,372 +4,92 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services | RS Automation EP</title>
-  <meta name="description" content="Simple, straightforward Excel automation packages for small teams. Starting at $300. No jargon, no surprises." />
+  <meta name="description" content="Three ways to get clarity on your finances. Starting at $300. No new software, no subscriptions. Just answers. Serving small businesses in El Paso, TX." />
   <style>
-    :root{
-      --bg:#f7f9fc;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#dbe3ef;
-      --card:#ffffff;
-      --brand:#2563eb;
-      --brand-dark:#1d4ed8;
-      --soft:#eef3fb;
-      --radius:16px;
+    :root {
+      --bg: #f7f9fc;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ef;
+      --card: #ffffff;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --soft: #eef3fb;
+      --radius: 16px;
     }
-
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    a{ text-decoration:none; color:inherit; }
-
-    .wrap{
-      max-width:1020px;
-      margin:0 auto;
-      padding:0 20px;
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
 
     /* NAV */
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      position:relative;
-      background:rgba(247,249,252,.88);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(219,227,239,.8);
-    }
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      min-height:58px;
-    }
-    .brand{
-      font-size:1.1rem;
-      font-weight:800;
-      letter-spacing:-0.03em;
-      color:var(--text);
-      white-space:nowrap;
-    }
-    .brand span{ color:var(--brand); }
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:2px;
-      background:#f1f5f9;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:4px;
-    }
-    .menu a:not(.btn){
-      color:var(--muted);
-      font-weight:600;
-      font-size:14px;
-      padding:7px 13px;
-      border-radius:8px;
-      transition:.15s ease;
-    }
-    .menu a:not(.btn):hover{ background:#fff; color:var(--text); }
-    .menu a.active{ background:#fff; color:var(--text); }
-    .btn{
-      display:inline-block;
-      padding:14px 20px;
-      border-radius:12px;
-      font-weight:700;
-      border:1px solid var(--line);
-      transition:.2s ease;
-    }
-    .btn-primary{
-      background:var(--brand);
-      color:#fff !important;
-      border-color:var(--brand);
-    }
-    .btn-primary:hover{ background:var(--brand-dark); }
-    .nav-cta{
-      padding:8px 16px;
-      font-size:14px;
-      border-radius:8px;
-    }
+    .nav { position: relative; background: rgba(247,249,252,.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(219,227,239,.8); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; }
+    .brand { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text); white-space: nowrap; }
+    .brand span { color: var(--brand); }
+    .menu { display: flex; align-items: center; gap: 2px; background: #f1f5f9; border: 1px solid var(--line); border-radius: 12px; padding: 4px; }
+    .menu a:not(.btn) { color: var(--muted); font-weight: 600; font-size: 14px; padding: 7px 13px; border-radius: 8px; transition: .15s ease; }
+    .menu a:not(.btn):hover { background: #fff; color: var(--text); }
+    .btn { display: inline-block; padding: 14px 20px; border-radius: 12px; font-weight: 700; border: 1px solid var(--line); transition: .2s ease; }
+    .btn-primary { background: var(--brand); color: #fff !important; border-color: var(--brand); }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .nav-cta { padding: 8px 14px; font-size: 13px; border-radius: 8px; }
 
     /* HAMBURGER */
-    .hamburger{
-      display:none;
-      flex-direction:column;
-      justify-content:center;
-      gap:5px;
-      cursor:pointer;
-      background:none;
-      border:none;
-      padding:6px;
-    }
-    .hamburger span{
-      display:block;
-      width:22px;
-      height:2px;
-      background:var(--text);
-      border-radius:2px;
-      transition:.25s ease;
-    }
-    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2){ opacity:0; }
-    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .25s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* HERO */
-    .hero{
-      padding:72px 0 56px;
-      background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);
-    }
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:14px;
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:#93c5fd;
-    }
-    h1{
-      margin:0 0 16px;
-      font-size:44px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      color:#fff;
-      max-width:700px;
-    }
-    .lead{
-      margin:0;
-      font-size:18px;
-      color:#94a3b8;
-      max-width:580px;
-    }
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); padding: 72px 0 56px; }
+    .eyebrow { display: inline-block; margin-bottom: 14px; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; }
+    h1 { margin: 0 0 16px; font-size: 44px; line-height: 1.08; letter-spacing: -0.04em; color: #fff; max-width: 640px; }
+    .lead { margin: 0; font-size: 18px; color: #94a3b8; max-width: 520px; }
 
     /* SECTION */
-    .section{ padding:64px 0 80px; }
+    .section { padding: 64px 0 80px; }
 
-    /* SERVICE CARDS GRID */
-    .services-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:24px;
-      margin-bottom:40px;
-    }
+    /* SERVICE CARDS */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-bottom: 40px; }
+    .service-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 32px 28px; box-shadow: 0 8px 32px rgba(15,23,42,.06); display: flex; flex-direction: column; position: relative; }
+    .service-card.featured { border-color: var(--brand); box-shadow: 0 8px 32px rgba(37,99,235,.12); }
+    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; white-space: nowrap; }
+    .service-price { font-size: 2rem; font-weight: 800; color: var(--brand); letter-spacing: -0.03em; margin-bottom: 2px; }
+    .service-price-note { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .service-name { font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin: 0 0 6px; }
+    .service-divider { border: none; border-top: 1px solid var(--line); margin: 20px 0; }
+    .service-includes { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .service-includes li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .service-includes li::before { content: '✓'; color: var(--brand); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .best-for { font-size: 13px; color: var(--muted); background: var(--soft); border-radius: 10px; padding: 10px 14px; margin-bottom: 20px; line-height: 1.5; }
+    .best-for strong { color: var(--text); font-weight: 700; }
+    .service-cta { display: block; text-align: center; padding: 13px; background: var(--brand); color: #fff !important; border-radius: 12px; font-weight: 700; font-size: 14px; transition: .2s ease; margin-top: auto; }
+    .service-cta:hover { background: var(--brand-dark); }
 
-    .service-card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:32px 28px;
-      box-shadow:0 8px 32px rgba(15,23,42,.06);
-      display:flex;
-      flex-direction:column;
-      position:relative;
-    }
-
-    .service-card.featured{
-      border-color:var(--brand);
-      box-shadow:0 8px 32px rgba(37,99,235,.12);
-    }
-
-    .featured-badge{
-      position:absolute;
-      top:-12px;
-      left:50%;
-      transform:translateX(-50%);
-      background:var(--brand);
-      color:#fff;
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      padding:4px 14px;
-      border-radius:20px;
-      white-space:nowrap;
-    }
-
-    .service-price{
-      font-size:2rem;
-      font-weight:800;
-      color:var(--brand);
-      letter-spacing:-0.03em;
-      margin-bottom:2px;
-    }
-
-    .service-price-note{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:20px;
-    }
-
-    .service-name{
-      font-size:20px;
-      font-weight:800;
-      color:var(--text);
-      letter-spacing:-0.02em;
-      margin:0 0 6px;
-    }
-
-    .service-divider{
-      border:none;
-      border-top:1px solid var(--line);
-      margin:20px 0;
-    }
-
-    .service-includes{
-      list-style:none;
-      padding:0;
-      margin:0 0 20px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      flex:1;
-    }
-
-    .service-includes li{
-      display:flex;
-      align-items:flex-start;
-      gap:10px;
-      font-size:14px;
-      color:var(--muted);
-      line-height:1.5;
-    }
-
-    .service-includes li::before{
-      content:'✓';
-      color:var(--brand);
-      font-weight:800;
-      flex-shrink:0;
-      margin-top:1px;
-    }
-
-    .best-for{
-      font-size:13px;
-      color:var(--muted);
-      background:var(--soft);
-      border-radius:10px;
-      padding:10px 14px;
-      margin-bottom:20px;
-      line-height:1.5;
-    }
-
-    .best-for strong{
-      color:var(--text);
-      font-weight:700;
-    }
-
-    .service-cta{
-      display:block;
-      text-align:center;
-      padding:13px;
-      background:var(--brand);
-      color:#fff !important;
-      border-radius:12px;
-      font-weight:700;
-      font-size:14px;
-      transition:.2s ease;
-      margin-top:auto;
-    }
-    .service-cta:hover{ background:var(--brand-dark); }
-
-    /* NOT SURE CARD */
-    .not-sure{
-      background:linear-gradient(135deg,#0f172a,#1e3a5f);
-      border-radius:20px;
-      padding:40px 44px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:32px;
-    }
-
-    .not-sure h2{
-      margin:0 0 8px;
-      font-size:22px;
-      color:#fff;
-      letter-spacing:-0.02em;
-    }
-
-    .not-sure p{
-      margin:0;
-      color:#94a3b8;
-      font-size:16px;
-      max-width:520px;
-    }
-
-    .not-sure-cta{
-      display:inline-block;
-      padding:14px 28px;
-      background:#2563eb;
-      color:#fff !important;
-      border-radius:12px;
-      font-weight:700;
-      font-size:15px;
-      white-space:nowrap;
-      flex-shrink:0;
-      transition:.2s ease;
-    }
-    .not-sure-cta:hover{ background:#1d4ed8; }
+    /* NOT SURE */
+    .not-sure { background: linear-gradient(135deg,#0f172a,#1e3a5f); border-radius: 20px; padding: 40px 44px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .not-sure h2 { margin: 0 0 8px; font-size: 22px; color: #fff; letter-spacing: -0.02em; }
+    .not-sure p { margin: 0; color: #94a3b8; font-size: 16px; max-width: 520px; }
+    .not-sure-cta { display: inline-block; padding: 14px 28px; background: #2563eb; color: #fff !important; border-radius: 12px; font-weight: 700; font-size: 15px; white-space: nowrap; flex-shrink: 0; transition: .2s ease; }
+    .not-sure-cta:hover { background: #1d4ed8; }
 
     /* FOOTER */
-    footer{
-      padding:28px 0 40px;
-      color:#64748b;
-      border-top:1px solid #e8edf7;
-      font-size:14px;
-    }
+    footer { padding: 28px 0 40px; color: #64748b; border-top: 1px solid #e8edf7; font-size: 14px; }
 
-    @media(max-width:860px){
-      .services-grid{
-        grid-template-columns:1fr;
-      }
-      .service-card.featured{
-        order:-1;
-      }
-      .not-sure{
-        flex-direction:column;
-        padding:32px 24px;
-        text-align:center;
-      }
-      .not-sure p{ max-width:100%; }
-      .hamburger{ display:flex; }
-      .menu{
-        display:none;
-        position:absolute;
-        top:58px;
-        left:0;
-        right:0;
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        background:#fff;
-        border-bottom:1px solid var(--line);
-        border-radius:0;
-        padding:8px 20px 16px;
-        box-shadow:0 8px 24px rgba(15,23,42,.1);
-        z-index:99;
-      }
-      .menu.open{ display:flex; }
-      .menu a:not(.btn){
-        padding:13px 4px;
-        border-radius:0;
-        border-bottom:1px solid #f1f5f9;
-        font-size:15px;
-      }
-      .nav-cta{
-        margin-top:10px;
-        text-align:center;
-        border-bottom:none !important;
-      }
-      h1{ font-size:36px; }
-      .lead{ font-size:17px; }
+    @media (max-width: 860px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card.featured { order: -1; }
+      .not-sure { flex-direction: column; padding: 32px 24px; text-align: center; }
+      .not-sure p { max-width: 100%; }
+      .hamburger { display: flex; }
+      .menu { display: none; position: absolute; top: 58px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #fff; border-bottom: 1px solid var(--line); border-radius: 0; padding: 8px 20px 16px; box-shadow: 0 8px 24px rgba(15,23,42,.1); z-index: 99; }
+      .menu.open { display: flex; }
+      .menu a:not(.btn) { padding: 13px 4px; border-radius: 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
+      .nav-cta { margin-top: 10px; text-align: center; border-bottom: none !important; }
+      h1 { font-size: 36px; }
+      .lead { font-size: 17px; }
     }
   </style>
 </head>
@@ -378,16 +98,14 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="index.html" class="brand">RS <span>Automation EP</span></a>
-
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-
       <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
-        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Let's look at your numbers</a>
       </nav>
     </div>
   </header>
@@ -395,82 +113,15 @@
   <script>
     const hb = document.getElementById('hamburger');
     const nm = document.getElementById('nav-menu');
-    hb.addEventListener('click', () => {
-      hb.classList.toggle('open');
-      nm.classList.toggle('open');
-    });
-    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      hb.classList.remove('open');
-      nm.classList.remove('open');
-    }));
+    hb.addEventListener('click', () => { hb.classList.toggle('open'); nm.classList.toggle('open'); });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('open'); nm.classList.remove('open'); }));
   </script>
 
   <section class="hero">
     <div class="wrap">
       <div class="eyebrow">Services</div>
-      <h1>Straightforward pricing. No surprises.</h1>
-      <p class="lead">
-        Pick the package that fits your situation — or just reach out and we'll figure it out together.
-      </p>
-    </div>
-  </section>
-
-  <style>
-    .demo-tab{ padding:10px 20px; border-radius:10px; border:1px solid var(--line); background:#fff; font-weight:700; font-size:14px; cursor:pointer; transition:.2s ease; color:var(--muted); }
-    .demo-tab:hover{ border-color:#93b4f0; color:var(--text); }
-    .demo-tab.active{ background:var(--brand); color:#fff; border-color:var(--brand); }
-    .demo-table-inner{ width:100%; border-collapse:collapse; font-size:13px; }
-    .demo-table-inner th{ background:var(--soft); padding:10px 14px; text-align:left; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); border-bottom:1px solid var(--line); }
-    .demo-table-inner td{ padding:9px 14px; border-bottom:1px solid #f0f4fb; color:var(--text); }
-    .demo-table-inner tr:last-child td{ border-bottom:none; }
-    .demo-table-inner tr:hover td{ background:#f7f9ff; }
-    @keyframes flowPulse{ 0%{ opacity:.2; transform:translateX(0); } 50%{ opacity:1; transform:translateX(4px); } 100%{ opacity:.2; transform:translateX(0); } }
-    .flow-arrow{ display:flex; align-items:center; gap:3px; }
-    .flow-dot{ width:6px; height:6px; border-radius:50%; background:var(--brand); animation:flowPulse 1.2s ease infinite; }
-    .flow-dot:nth-child(2){ animation-delay:.2s; }
-    .flow-dot:nth-child(3){ animation-delay:.4s; }
-    @keyframes reportFadeIn{ from{ opacity:0; transform:translateY(4px); } to{ opacity:1; transform:translateY(0); } }
-    .report-line{ display:block; opacity:0; animation:reportFadeIn .3s ease forwards; }
-    .demo-content{ transition: opacity .4s ease; }
-    @media(max-width:860px){ .demo-grid{ grid-template-columns:1fr !important; } .flow-arrow{ transform:rotate(90deg); margin:8px auto; } }
-  </style>
-
-  <section style="padding:56px 0; background:var(--soft);">
-    <div class="wrap">
-      <div class="eyebrow">Live Demo</div>
-      <h2 style="margin:0 0 8px;">See it in action</h2>
-      <p style="margin:0 0 28px; color:var(--muted); font-size:17px;">Click on an industry to see how raw data becomes a clean report.</p>
-
-      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px;">
-        <button class="demo-tab active" onclick="switchTab('nonprofit',this)">🏛 Nonprofits</button>
-        <button class="demo-tab" onclick="switchTab('construction',this)">🏗 Construction</button>
-        <button class="demo-tab" onclick="switchTab('lawfirm',this)">⚖️ Law Firms</button>
-        <button class="demo-tab" onclick="switchTab('church',this)">✝️ Churches</button>
-      </div>
-
-      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center;" class="demo-grid demo-content">
-        <div>
-          <div style="font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--brand); margin-bottom:10px;">Input Table</div>
-          <div style="background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:0 4px 16px rgba(15,23,42,.06);">
-            <div id="demo-table"></div>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:80px;">
-          <div style="font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">Automation</div>
-          <div class="flow-arrow">
-            <div class="flow-dot"></div>
-            <div class="flow-dot"></div>
-            <div class="flow-dot"></div>
-            <span style="font-size:22px; color:var(--brand);">→</span>
-          </div>
-        </div>
-        <div>
-          <div style="font-size:12px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#16a34a; margin-bottom:10px;">Generated Report</div>
-          <div style="background:#0f172a; border-radius:14px; padding:20px; box-shadow:0 4px 16px rgba(15,23,42,.14); min-height:180px;">
-            <div id="demo-output" style="font-family:'Courier New',monospace; font-size:13px; line-height:1.8; color:#dbeafe;"></div>
-          </div>
-        </div>
-      </div>
+      <h1>Three ways I can help.</h1>
+      <p class="lead">Pick what fits where you are right now — or reach out and we'll figure it out together.</p>
     </div>
   </section>
 
@@ -479,158 +130,71 @@
 
       <div class="services-grid">
 
-        <!-- EXCEL CLEANUP -->
         <div class="service-card">
-          <div class="service-name">Excel Cleanup</div>
+          <div class="service-name">Where's your money going?</div>
           <div class="service-price">$300</div>
-          <div class="service-price-note">starting price</div>
+          <div class="service-price-note">one-time</div>
           <hr class="service-divider" />
           <ul class="service-includes">
-            <li>You send me your messy workbook</li>
-            <li>I consolidate scattered tabs and files into one clean workbook</li>
-            <li>Fix broken formulas and remove duplicates</li>
-            <li>Standardize formatting throughout</li>
-            <li>Hand back a clean, reusable template</li>
+            <li>You send me what you have — QuickBooks, bank statements, invoices</li>
+            <li>I pull everything together into one clear picture</li>
+            <li>You see what's coming in, what's going out, and what's actually working</li>
+            <li>One deliverable. One conversation to walk through it.</li>
           </ul>
-          <div class="best-for"><strong>Best for:</strong> anyone drowning in messy spreadsheets who just needs them cleaned up</div>
-          <a href="contact.html" class="service-cta">Get Started →</a>
+          <div class="best-for"><strong>Best for:</strong> owners who've never had anyone look at their numbers and want to know where they actually stand</div>
+          <a href="contact.html" class="service-cta">Let's look at your numbers →</a>
         </div>
 
-        <!-- REPORT AUTOMATION -->
         <div class="service-card featured">
           <div class="featured-badge">Most Common</div>
-          <div class="service-name">Report Automation</div>
+          <div class="service-name">Monthly reporting</div>
           <div class="service-price">$750</div>
-          <div class="service-price-note">starting price</div>
+          <div class="service-price-note">per month</div>
           <hr class="service-divider" />
           <ul class="service-includes">
-            <li>You have a report you rebuild by hand every week or month</li>
-            <li>I automate the data pulls, checks, and formatting</li>
-            <li>Your report runs in minutes instead of hours</li>
-            <li>Includes one round of revisions</li>
+            <li>Same clear picture, every single month</li>
+            <li>You see trends over time — not just where you are, but where you're headed</li>
+            <li>Red flags get caught before they become real problems</li>
+            <li>Includes one check-in call per month</li>
           </ul>
-          <div class="best-for"><strong>Best for:</strong> teams rebuilding the same report every cycle and losing hours doing it</div>
-          <a href="contact.html" class="service-cta">Get Started →</a>
+          <div class="best-for"><strong>Best for:</strong> businesses that want to stop flying blind and stay on top of their numbers without doing it themselves</div>
+          <a href="contact.html" class="service-cta">Let's look at your numbers →</a>
         </div>
 
-        <!-- CUSTOM SYSTEM BUILD -->
         <div class="service-card">
-          <div class="service-name">Custom System Build</div>
+          <div class="service-name">Full system build</div>
           <div class="service-price">$1,500</div>
           <div class="service-price-note">starting price</div>
           <hr class="service-divider" />
           <ul class="service-includes">
-            <li>You have a whole workflow buried in spreadsheets, emails, and manual steps</li>
-            <li>I redesign it into one clean, automated system</li>
-            <li>Includes documentation so your team can run it without me</li>
-            <li>Includes a walkthrough session on handoff</li>
+            <li>Once you can see your numbers, we build a system around them</li>
+            <li>Reporting, tracking, and operations get automated</li>
+            <li>Includes documentation so your team runs it without me</li>
+            <li>Includes a handoff walkthrough session</li>
           </ul>
-          <div class="best-for"><strong>Best for:</strong> businesses with a process that keeps eating time — every week, every month</div>
-          <a href="contact.html" class="service-cta">Get Started →</a>
+          <div class="best-for"><strong>Best for:</strong> businesses with a process that keeps eating time — every week or every month</div>
+          <a href="contact.html" class="service-cta">Let's look at your numbers →</a>
         </div>
 
       </div>
 
-      <!-- NOT SURE -->
       <div class="not-sure">
         <div>
-          <h2>Not sure what you need?</h2>
-          <p>No pressure — let's just talk about what's slowing you down. One conversation is usually enough to figure out whether it's a quick fix or something bigger.</p>
+          <h2>Not sure which one fits?</h2>
+          <p>That's fine. Most people start with a conversation. Tell me what's frustrating you and I'll tell you where to start.</p>
         </div>
-        <a href="contact.html" class="not-sure-cta">Show Me Your Excel Problem</a>
+        <a href="contact.html" class="not-sure-cta">Let's look at your numbers</a>
       </div>
 
     </div>
   </section>
 
   <footer>
-    <div class="wrap" style="text-align:center;">
-      © RS Automation EP · El Paso, Texas · Excel and reporting automation for small teams &amp; professionals
-      <br><a href="insights.html" style="color:#94a3b8; font-size:12px; margin-top:6px; display:inline-block;">Insights</a>
+    <div class="wrap" style="text-align: center;">
+      © RS Automation EP · El Paso, Texas · Financial clarity for small businesses in El Paso
+      <br><a href="insights.html" style="color: #94a3b8; font-size: 12px; margin-top: 6px; display: inline-block;">Insights</a>
     </div>
   </footer>
-
-  <script>
-  const cases = {
-    nonprofit: {
-      headers: ['Donor', 'Amount', 'Date', 'Campaign'],
-      rows: [['Maria Lopez','$500','Mar 1','Spring Drive'],['James Hill','$250','Mar 3','General Fund'],['Ana Torres','$1,000','Mar 5','Spring Drive'],['Robert Kim','$150','Mar 7','Youth Program'],['Linda Chase','$750','Mar 9','Spring Drive']],
-      output: ['📋 Monthly Giving Summary — March 2025','─────────────────────────────────────','✦ Total Raised:        $2,650','✦ Total Donors:        5','✦ Top Campaign:        Spring Drive ($2,250)','✦ Largest Gift:        Ana Torres — $1,000','✦ Avg Gift Size:       $530','─────────────────────────────────────','✓ Report ready for board review']
-    },
-    construction: {
-      headers: ['Item', 'Qty', 'Unit Cost', 'Location'],
-      rows: [['Concrete Mix','40 bags','$12.00','Warehouse A'],['Steel Rebar','200 rods','$8.50','Site 3'],['Lumber 2x4','85 units','$6.25','Warehouse B'],['PVC Pipe','60 units','$4.00','Site 1'],['Drywall Sheet','120 units','$11.00','Warehouse A']],
-      output: ['📋 Weekly Inventory Report — Mar 10, 2025','─────────────────────────────────────────','✦ Total Items Tracked: 5 categories','✦ Total Inventory Value: $4,598.50','⚠ Low Stock Alert:     PVC Pipe (60 left)','⚠ Low Stock Alert:     Lumber 2x4 (85 left)','✦ Highest Value Item:  Drywall Sheet ($1,320)','─────────────────────────────────────────','✓ Report ready for site manager review']
-    },
-    lawfirm: {
-      headers: ['Client', 'Matter', 'Hours', 'Rate/hr'],
-      rows: [['Acme Corp','Contract Review','4.5h','$350'],['J. Rivera','Estate Planning','2.0h','$300'],['BuildCo LLC','Litigation Prep','6.0h','$400'],['M. Sanders','Family Law','3.5h','$275'],['NovaTech','IP Filing','5.0h','$425']],
-      output: ['📋 Weekly Billing Summary — Mar 10, 2025','─────────────────────────────────────────','✦ Total Hours Logged:  21.0h','✦ Total Billable Amount: $7,912.50','✦ Top Client:          BuildCo LLC ($2,400)','✦ Highest Rate:        NovaTech ($425/hr)','✦ Avg Hourly Rate:     $377','─────────────────────────────────────────','✓ Report ready for billing department']
-    },
-    church: {
-      headers: ['Member', 'Type', 'Amount', 'Date'],
-      rows: [['Garcia Family','Tithe','$400','Mar 2'],['D. Williams','Offering','$75','Mar 2'],['Johnson Family','Tithe','$600','Mar 9'],['M. Reyes','Missions Fund','$150','Mar 9'],['Smith Family','Tithe','$520','Mar 16']],
-      output: ['📋 Monthly Giving Report — March 2025','──────────────────────────────────────','✦ Total Contributions:  $1,745','✦ Total Tithes:         $1,520','✦ Total Offerings:      $225','✦ Missions Fund:        $150','✦ Contributing Members: 5','✦ Avg Gift per Member:  $349','──────────────────────────────────────','✓ Report ready for pastor & treasurer']
-    }
-  };
-
-  const tabKeys = ['nonprofit', 'construction', 'lawfirm', 'church'];
-  let currentTabIndex = 0;
-  let autoTimer = null;
-  let pauseTimer = null;
-
-  function switchTab(key, btn) {
-    document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    currentTabIndex = tabKeys.indexOf(key);
-    renderDemo(key);
-    clearTimeout(pauseTimer);
-    clearInterval(autoTimer);
-    pauseTimer = setTimeout(startAutoRotate, 10000);
-  }
-
-  function autoAdvance() {
-    const content = document.querySelector('.demo-content');
-    content.style.opacity = '0';
-    setTimeout(() => {
-      currentTabIndex = (currentTabIndex + 1) % tabKeys.length;
-      const key = tabKeys[currentTabIndex];
-      const btn = document.querySelectorAll('.demo-tab')[currentTabIndex];
-      document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      renderDemo(key);
-      content.style.opacity = '1';
-    }, 400);
-  }
-
-  function startAutoRotate() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(autoAdvance, 15000);
-  }
-
-  function renderDemo(key) {
-    const data = cases[key];
-    let tableHTML = '<table class="demo-table-inner"><thead><tr>';
-    data.headers.forEach(h => tableHTML += `<th>${h}</th>`);
-    tableHTML += '</tr></thead><tbody>';
-    data.rows.forEach(row => { tableHTML += '<tr>'; row.forEach(cell => tableHTML += `<td>${cell}</td>`); tableHTML += '</tr>'; });
-    tableHTML += '</tbody></table>';
-    document.getElementById('demo-table').innerHTML = tableHTML;
-    const out = document.getElementById('demo-output');
-    out.innerHTML = '';
-    data.output.forEach((line, i) => {
-      const span = document.createElement('span');
-      span.className = 'report-line';
-      span.style.animationDelay = (i * 0.12) + 's';
-      span.style.color = line.startsWith('⚠') ? '#fbbf24' : line.startsWith('✓') ? '#86efac' : '#dbeafe';
-      span.textContent = line;
-      out.appendChild(span);
-    });
-  }
-
-  renderDemo('nonprofit');
-  startAutoRotate();
-  </script>
 
 </body>
 </html>

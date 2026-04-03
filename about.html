@@ -4,471 +4,112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | RS Automation EP</title>
-  <meta name="description" content="RS Automation EP is founded by Ricardo Ramirez Jr., an Air Force veteran with an MBA and MSBA who builds custom automation for El Paso small businesses." />
+  <meta name="description" content="Ricardo Ramirez Jr. is a senior financial analyst, Air Force veteran, and El Paso native who helps local businesses finally understand where their money is going." />
   <style>
-    :root{
-      --bg:#f7f9fc;
-      --text:#0f172a;
-      --muted:#475569;
-      --line:#dbe3ef;
-      --card:#ffffff;
-      --brand:#2563eb;
-      --brand-dark:#1d4ed8;
-      --soft:#eef3fb;
-      --radius:16px;
+    :root {
+      --bg: #f7f9fc;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #dbe3ef;
+      --card: #ffffff;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --soft: #eef3fb;
+      --radius: 16px;
     }
-
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.6;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .wrap{
-      max-width:1080px;
-      margin:0 auto;
-      padding:0 20px;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      position:relative;
-      background:rgba(247,249,252,.88);
-      backdrop-filter:blur(10px);
-      border-bottom:1px solid rgba(219,227,239,.8);
-    }
-
-    .nav-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      min-height:58px;
-    }
-
-    .brand{
-      font-size:1.1rem;
-      font-weight:800;
-      letter-spacing:-0.03em;
-      color:var(--text);
-      white-space:nowrap;
-    }
-
-    .brand span{
-      color:var(--brand);
-    }
-
-    .menu{
-      display:flex;
-      align-items:center;
-      gap:2px;
-      background:#f1f5f9;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:4px;
-    }
-
-    .menu a:not(.btn){
-      color:var(--muted);
-      font-weight:600;
-      font-size:14px;
-      padding:7px 13px;
-      border-radius:8px;
-      transition:.15s ease;
-    }
-
-    .menu a:not(.btn):hover{
-      background:#fff;
-      color:var(--text);
-    }
-
-    .btn{
-      display:inline-block;
-      padding:14px 20px;
-      border-radius:12px;
-      font-weight:700;
-      border:1px solid var(--line);
-      transition:.2s ease;
-    }
-
-    .btn-primary{
-      background:var(--brand);
-      color:#fff !important;
-      border-color:var(--brand);
-    }
-
-    .btn-primary:hover{
-      background:var(--brand-dark);
-      color:#fff !important;
-    }
-
-    .btn-secondary{
-      background:#fff;
-      color:var(--text);
-    }
-
-    .btn-secondary:hover{
-      border-color:#c6d2ea;
-      background:#fdfefe;
-    }
-
-    .nav-cta{
-      padding:8px 16px;
-      font-size:14px;
-      border-radius:8px;
-    }
-
-    .hero{
-      padding:72px 0 48px;
-      background:linear-gradient(180deg, #eef4ff 0%, #f7f9fc 100%);
-    }
-
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:14px;
-      font-size:.78rem;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--brand);
-    }
-
-    h1{
-      margin:0 0 16px;
-      font-size:46px;
-      line-height:1.08;
-      letter-spacing:-0.04em;
-      max-width:900px;
-    }
-
-    .lead{
-      margin:0;
-      font-size:20px;
-      color:var(--muted);
-      max-width:760px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:28px;
-      align-items:start;
-      margin-top:36px;
-    }
-
-    .section{
-      padding:24px 0 72px;
-    }
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:0 8px 24px rgba(15,23,42,.04);
-    }
-
-    h2{
-      margin:0 0 14px;
-      font-size:30px;
-      line-height:1.15;
-      letter-spacing:-0.03em;
-    }
-
-    p{
-      margin:0 0 14px;
-      color:var(--muted);
-    }
-
-    ul{
-      margin:0;
-      padding-left:20px;
-    }
-
-    li{
-      margin-bottom:10px;
-      color:var(--muted);
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:14px;
-      margin-top:18px;
-    }
-
-    .stat{
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:16px;
-      background:#fff;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:1.05rem;
-      margin-bottom:6px;
-      color:var(--text);
-    }
-
-    .cta{
-      margin-top:24px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .founder{
-      display:grid;
-      grid-template-columns:260px 1fr;
-      gap:48px;
-      align-items:start;
-      margin-bottom:40px;
-    }
-
-    .founder-photo{
-      width:100%;
-      max-width:260px;
-      aspect-ratio:3 / 4;
-      object-fit:cover;
-      object-position:top;
-      border-radius:20px;
-      box-shadow:0 20px 48px rgba(15,23,42,.14);
-    }
-
-    .founder-left{
-      display:flex;
-      flex-direction:column;
-      gap:16px;
-    }
-
-    .founder-name{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:14px 16px;
-      text-align:center;
-    }
-
-    .founder-name strong{
-      display:block;
-      font-size:15px;
-      color:var(--text);
-      margin-bottom:4px;
-    }
-
-    .founder-name span{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .stat-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin:20px 0;
-    }
-
-    .stat-chip{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:12px;
-      padding:14px 16px;
-      box-shadow:0 2px 10px rgba(15,23,42,.04);
-    }
-
-    .stat-chip .chip-icon{
-      font-size:1.2rem;
-      margin-bottom:6px;
-      display:block;
-    }
-
-    .stat-chip .chip-val{
-      font-size:14px;
-      font-weight:700;
-      color:var(--text);
-      display:block;
-      margin-bottom:2px;
-    }
-
-    .stat-chip .chip-label{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .pull-quote{
-      position:relative;
-      background:linear-gradient(135deg,#0f172a,#1e3a5f);
-      border-radius:20px;
-      padding:36px 36px 28px;
-      margin-top:40px;
-    }
-
-    .pull-quote::before{
-      content:'"';
-      position:absolute;
-      top:-18px;
-      left:28px;
-      font-size:96px;
-      color:var(--brand);
-      font-family:Georgia, serif;
-      line-height:1;
-    }
-
-    .pull-quote blockquote{
-      margin:0 0 16px;
-      font-size:16px;
-      line-height:1.75;
-      color:#cbd5e1;
-      font-style:italic;
-    }
-
-    .pull-quote cite{
-      font-size:13px;
-      font-weight:700;
-      color:#93c5fd;
-      font-style:normal;
-    }
-
-    .footer{
-      padding:28px 0 40px;
-      color:#64748b;
-      border-top:1px solid #e8edf7;
-      margin-top:8px;
-      font-size:14px;
-    }
-
-    .hamburger{
-      display:none;
-      flex-direction:column;
-      justify-content:center;
-      gap:5px;
-      cursor:pointer;
-      background:none;
-      border:none;
-      padding:6px;
-    }
-
-    .hamburger span{
-      display:block;
-      width:22px;
-      height:2px;
-      background:var(--text);
-      border-radius:2px;
-      transition:.25s ease;
-    }
-
-    .hamburger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2){ opacity:0; }
-    .hamburger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
-
-    @media (max-width: 860px){
-      .grid{
-        grid-template-columns:1fr;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .hamburger{
-        display:flex;
-      }
-
-      .menu{
-        display:none;
-        position:absolute;
-        top:58px;
-        left:0;
-        right:0;
-        flex-direction:column;
-        align-items:stretch;
-        gap:0;
-        background:#fff;
-        border-bottom:1px solid var(--line);
-        border-radius:0;
-        padding:8px 20px 16px;
-        box-shadow:0 8px 24px rgba(15,23,42,.1);
-        z-index:99;
-      }
-
-      .menu.open{
-        display:flex;
-      }
-
-      .menu a:not(.btn){
-        padding:13px 4px;
-        border-radius:0;
-        border-bottom:1px solid #f1f5f9;
-        font-size:15px;
-      }
-
-      .nav-cta{
-        margin-top:10px;
-        text-align:center;
-        border-bottom:none !important;
-      }
-
-      .founder{
-        grid-template-columns:1fr;
-      }
-
-      .founder-left{
-        align-items:center;
-      }
-
-      .founder-photo{
-        margin:0 auto;
-        max-width:220px;
-      }
-
-      .stat-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .pull-quote{
-        padding:32px 24px 24px;
-      }
-
-      h1{
-        font-size:38px;
-      }
-
-      h2{
-        font-size:26px;
-      }
-
-      .lead{
-        font-size:18px;
-      }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+    /* NAV */
+    .nav { position: relative; background: rgba(247,249,252,.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(219,227,239,.8); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; }
+    .brand { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text); white-space: nowrap; }
+    .brand span { color: var(--brand); }
+    .menu { display: flex; align-items: center; gap: 2px; background: #f1f5f9; border: 1px solid var(--line); border-radius: 12px; padding: 4px; }
+    .menu a:not(.btn) { color: var(--muted); font-weight: 600; font-size: 14px; padding: 7px 13px; border-radius: 8px; transition: .15s ease; }
+    .menu a:not(.btn):hover { background: #fff; color: var(--text); }
+    .btn { display: inline-block; padding: 14px 20px; border-radius: 12px; font-weight: 700; border: 1px solid var(--line); transition: .2s ease; }
+    .btn-primary { background: var(--brand); color: #fff !important; border-color: var(--brand); }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-secondary { background: #fff; color: var(--text); }
+    .btn-secondary:hover { border-color: #c6d2ea; background: #fdfefe; }
+    .nav-cta { padding: 8px 14px; font-size: 13px; border-radius: 8px; }
+
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .25s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); padding: 72px 0 56px; }
+    .eyebrow { display: inline-block; margin-bottom: 14px; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #93c5fd; }
+    h1 { margin: 0 0 16px; font-size: 40px; line-height: 1.12; letter-spacing: -0.04em; color: #fff; max-width: 740px; }
+    .hero-sub { margin: 0; font-size: 18px; color: #94a3b8; max-width: 540px; }
+
+    /* SECTION */
+    .section { padding: 64px 0 72px; }
+
+    /* FOUNDER */
+    .founder { display: grid; grid-template-columns: 260px 1fr; gap: 52px; align-items: start; margin-bottom: 52px; }
+    .founder-left { display: flex; flex-direction: column; gap: 16px; }
+    .founder-photo { width: 100%; max-width: 260px; aspect-ratio: 3 / 4; object-fit: cover; object-position: top; border-radius: 20px; box-shadow: 0 20px 48px rgba(15,23,42,.14); }
+    .founder-name { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; text-align: center; }
+    .founder-name strong { display: block; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+    .founder-name span { font-size: 12px; color: var(--muted); }
+
+    h2 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; letter-spacing: -0.03em; }
+    p { margin: 0 0 16px; color: var(--muted); }
+
+    /* STATS */
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 28px 0; }
+    .stat-chip { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; box-shadow: 0 2px 10px rgba(15,23,42,.04); }
+    .stat-chip .chip-icon { font-size: 1.2rem; margin-bottom: 6px; display: block; }
+    .stat-chip .chip-val { font-size: 14px; font-weight: 700; color: var(--text); display: block; margin-bottom: 2px; }
+    .stat-chip .chip-label { font-size: 12px; color: var(--muted); }
+
+    /* PULL QUOTE */
+    .pull-quote { position: relative; background: linear-gradient(135deg,#0f172a,#1e3a5f); border-radius: 20px; padding: 36px 36px 28px; margin-top: 8px; }
+    .pull-quote::before { content: '"'; position: absolute; top: -18px; left: 28px; font-size: 96px; color: var(--brand); font-family: Georgia, serif; line-height: 1; }
+    .pull-quote blockquote { margin: 0 0 16px; font-size: 16px; line-height: 1.75; color: #cbd5e1; font-style: italic; }
+    .pull-quote cite { font-size: 13px; font-weight: 700; color: #93c5fd; font-style: normal; }
+
+    /* FOOTER */
+    .footer { padding: 28px 0 40px; color: #64748b; border-top: 1px solid #e8edf7; margin-top: 8px; font-size: 14px; }
+
+    @media (max-width: 860px) {
+      .hamburger { display: flex; }
+      .menu { display: none; position: absolute; top: 58px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #fff; border-bottom: 1px solid var(--line); border-radius: 0; padding: 8px 20px 16px; box-shadow: 0 8px 24px rgba(15,23,42,.1); z-index: 99; }
+      .menu.open { display: flex; }
+      .menu a:not(.btn) { padding: 13px 4px; border-radius: 0; border-bottom: 1px solid #f1f5f9; font-size: 15px; }
+      .nav-cta { margin-top: 10px; text-align: center; border-bottom: none !important; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; }
+      .founder { grid-template-columns: 1fr; }
+      .founder-left { align-items: center; }
+      .founder-photo { margin: 0 auto; max-width: 220px; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .pull-quote { padding: 32px 24px 24px; }
+      .section { padding: 48px 0; }
     }
   </style>
 </head>
 <body>
+
   <header class="nav">
     <div class="wrap nav-inner">
       <a href="index.html" class="brand">RS <span>Automation EP</span></a>
-
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
-
       <nav class="menu" id="nav-menu">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="about.html">About</a>
-        <a class="btn btn-primary nav-cta" href="contact.html">Fix My Excel</a>
+        <a class="btn btn-primary nav-cta" href="contact.html">Let's look at your numbers</a>
       </nav>
     </div>
   </header>
@@ -476,30 +117,22 @@
   <script>
     const hb = document.getElementById('hamburger');
     const nm = document.getElementById('nav-menu');
-    hb.addEventListener('click', () => {
-      hb.classList.toggle('open');
-      nm.classList.toggle('open');
-    });
-    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      hb.classList.remove('open');
-      nm.classList.remove('open');
-    }));
+    hb.addEventListener('click', () => { hb.classList.toggle('open'); nm.classList.toggle('open'); });
+    nm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hb.classList.remove('open'); nm.classList.remove('open'); }));
   </script>
 
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">About RS Automation EP</div>
-        <h1><em>You should spend your time on the work you love — not on spreadsheets.</em></h1>
-        <p class="lead">
-          I build custom automation tools for small businesses, nonprofits, churches, and local companies
-          in El Paso that are tired of drowning in repetitive admin work. You bring the mission. I handle the system.
-        </p>
-      </div>
-    </section>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">About</div>
+      <h1>I got tired of watching business owners work hard and not know where their money was going.</h1>
+      <p class="hero-sub">So I built something for this community.</p>
+    </div>
+  </section>
 
+  <main>
     <section class="section">
       <div class="wrap">
+
         <div class="founder">
           <div class="founder-left">
             <img src="images/IMG_3964_jpg.JPG" alt="Ricardo Ramirez Jr" class="founder-photo" />
@@ -507,20 +140,26 @@
               <strong>Ricardo Ramirez Jr.</strong>
               <span>MBA · MSBA · Air Force Veteran</span>
             </div>
-            <a href="https://www.linkedin.com/in/ricardo-ramirez-jr/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-align:center; font-size:13px; padding:10px 16px;">
+            <a href="https://www.linkedin.com/in/ricardo-ramirez-jr/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="text-align: center; font-size: 13px; padding: 10px 16px;">
               View LinkedIn →
             </a>
           </div>
 
           <div>
-            <div class="eyebrow" style="margin-bottom:10px;">About the Founder</div>
-            <h2 style="margin:0 0 16px;">Ricardo Ramirez Jr.</h2>
+            <div class="eyebrow" style="margin-bottom: 10px;">About the Founder</div>
+            <h2>Ricardo Ramirez Jr.</h2>
 
-            <p style="font-size:17px; line-height:1.75; color:var(--muted); margin:0 0 28px;">
-              I started RS Automation EP because I deeply care about this community and believe that business owners, nonprofits, churches, and local companies should be spending their time on the work they love — not on repetitive admin, manual reporting, or spreadsheet upkeep.
+            <p style="font-size: 17px; line-height: 1.75; color: var(--muted);">
+              I spent years as a senior analyst inside USAA — one of the largest financial companies in the country. I built models, automated reports, and showed leadership exactly what was happening with their numbers. I got good at seeing things in data that most people don't know to look for.
+            </p>
+            <p style="font-size: 17px; line-height: 1.75; color: var(--muted);">
+              Then I looked at the businesses in my own community — here in El Paso — and realized most of them have never had anyone do that for them. A construction company working hard for years, not knowing which jobs were actually making money. A church with no real visibility into where donations were going. A nonprofit trying to explain their finances to a donor without a clear picture themselves.
+            </p>
+            <p style="font-size: 17px; line-height: 1.75; color: var(--muted);">
+              These aren't failing businesses. They're just businesses that haven't had anyone stop and look at the picture with them. That's what I do now.
             </p>
 
-            <div class="eyebrow" style="margin-bottom:14px;">Demonstrated Work</div>
+            <div class="eyebrow" style="margin-bottom: 14px;">Demonstrated Work</div>
             <div class="stat-grid">
               <div class="stat-chip">
                 <span class="chip-icon">⏱</span>
@@ -530,12 +169,12 @@
               <div class="stat-chip">
                 <span class="chip-icon">📉</span>
                 <span class="chip-val">~40% faster</span>
-                <span class="chip-label">underwriting prep at GECU</span>
+                <span class="chip-label">financial prep at GECU</span>
               </div>
               <div class="stat-chip">
                 <span class="chip-icon">⚡</span>
                 <span class="chip-val">6 months earlier</span>
-                <span class="chip-label">failure detection via risk models</span>
+                <span class="chip-label">catching problems before they hit</span>
               </div>
               <div class="stat-chip">
                 <span class="chip-icon">🎖️</span>
@@ -550,7 +189,7 @@
               <div class="stat-chip">
                 <span class="chip-icon">🎓</span>
                 <span class="chip-val">MBA + MSBA</span>
-                <span class="chip-label">Texas A&M — 4.0 GPA</span>
+                <span class="chip-label">Texas A&amp;M — 4.0 GPA</span>
               </div>
             </div>
           </div>
@@ -558,16 +197,15 @@
 
         <div class="pull-quote">
           <blockquote>
-            "What sets Ricardo apart are his data analytic skills and his ability to pull together data from multiple sources. He proactively offers analysis that creates real insight into how a process is performing — and he’s always looking for ways to automate data collection so less time is spent pulling data and more time is spent understanding it. The visibility he created kept our remediation portfolio on track and advanced the thinking of the entire team."
+            "What sets Ricardo apart are his data analytic skills and his ability to pull together data from multiple sources. He proactively offers analysis that creates real insight into how a process is performing — and he's always looking for ways to automate data collection so less time is spent pulling data and more time is spent understanding it. The visibility he created kept our remediation portfolio on track and advanced the thinking of the entire team."
           </blockquote>
           <cite>— Senior Director, USAA Bank</cite>
         </div>
 
-        <div style="text-align:center; padding:56px 0 8px;">
-          <div class="eyebrow" style="margin-bottom:12px;">Ready to simplify your workflow?</div>
-          <h2 style="margin:0 0 12px;">Let’s talk about what’s slowing you down.</h2>
-          <p style="color:var(--muted); font-size:17px; margin:0 0 24px;">No pressure. Just a conversation about what you’re working with and whether I can help.</p>
-          <a class="btn btn-primary" href="contact.html" style="font-size:16px; padding:16px 32px;">Show Me Your Excel Problem</a>
+        <div style="text-align: center; padding: 56px 0 8px;">
+          <h2 style="margin-bottom: 12px;">Let's talk about what's going on with your numbers.</h2>
+          <p style="color: var(--muted); font-size: 17px; margin: 0 0 24px; max-width: 420px; margin-left: auto; margin-right: auto;">No pressure. Just a conversation about what you're working with and whether I can help.</p>
+          <a class="btn btn-primary" href="contact.html" style="font-size: 16px; padding: 16px 32px;">Let's look at your numbers</a>
         </div>
 
       </div>
@@ -575,10 +213,11 @@
   </main>
 
   <footer class="footer">
-    <div class="wrap" style="text-align:center;">
-        © RS Automation EP · El Paso, Texas · Excel and reporting automation for small teams &amp; professionals
-        <br><a href="insights.html" style="color:#94a3b8; font-size:12px; margin-top:6px; display:inline-block;">Insights</a>
+    <div class="wrap" style="text-align: center;">
+      © RS Automation EP · El Paso, Texas · Financial clarity for small businesses in El Paso
+      <br><a href="insights.html" style="color: #94a3b8; font-size: 12px; margin-top: 6px; display: inline-block;">Insights</a>
     </div>
   </footer>
+
 </body>
 </html>
