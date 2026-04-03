@@ -123,12 +123,25 @@
 
   <section class="hero">
     <div class="wrap">
-      <div class="eyebrow">El Paso, TX</div>
-      <h1>I turn your numbers into answers.</h1>
-      <p class="subline">You already have the data — bank statements, QuickBooks, invoices, donation records. I pull it together and make it make sense.</p>
-      <a href="contact.html" class="hero-btn">Let's look at your numbers</a>
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:center;" class="hero-grid">
+        <div>
+          <div class="eyebrow">El Paso, TX</div>
+          <h1>I turn your numbers into answers.</h1>
+          <p class="subline">You have the data in your books and statements. I pull it together and tell you exactly what it means.</p>
+          <a href="contact.html" class="hero-btn">Let's look at your numbers</a>
+        </div>
+        <div style="display:flex; align-items:flex-end; justify-content:center;" class="hero-photo-col">
+          <img src="images/image-2.png" alt="Ricardo Ramirez Jr" style="width:100%; max-width:300px; filter:drop-shadow(0 20px 40px rgba(0,0,0,.5));">
+        </div>
+      </div>
     </div>
   </section>
+  <style>
+    @media(max-width:860px){
+      .hero-grid{ grid-template-columns:1fr !important; }
+      .hero-photo-col{ display:none !important; }
+    }
+  </style>
 
   <section class="section" style="background: #fff;">
     <div class="wrap">
