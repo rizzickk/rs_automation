@@ -151,19 +151,19 @@
     <div class="wrap">
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; text-align:center;" class="stats-band">
         <div style="padding:16px 20px; border-right:1px solid var(--line);">
-          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;">5,600+</div>
+          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;" data-count="5600" data-suffix="+">0+</div>
           <div style="font-size:13px; color:var(--muted); line-height:1.4;">hours saved annually<br>at USAA Bank</div>
         </div>
         <div style="padding:16px 20px; border-right:1px solid var(--line);">
-          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;">&lt;10 min</div>
+          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;" data-count="10" data-prefix="&lt;" data-suffix=" min">0 min</div>
           <div style="font-size:13px; color:var(--muted); line-height:1.4;">reporting turnaround<br>from days to minutes</div>
         </div>
         <div style="padding:16px 20px; border-right:1px solid var(--line);">
-          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;">75%</div>
+          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;" data-count="75" data-suffix="%">0%</div>
           <div style="font-size:13px; color:var(--muted); line-height:1.4;">faster reporting<br>at RotaCare El Paso</div>
         </div>
         <div style="padding:16px 20px;">
-          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;">6 mo.</div>
+          <div style="font-size:26px; font-weight:800; color:var(--brand); letter-spacing:-0.03em; margin-bottom:4px;" data-count="6" data-suffix=" mo.">0 mo.</div>
           <div style="font-size:13px; color:var(--muted); line-height:1.4;">earlier failure detection<br>vs legacy processes</div>
         </div>
       </div>
@@ -249,5 +249,33 @@
     </div>
   </footer>
 
+  <script>
+    function animateCounters() {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = +el.dataset.count;
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1800;
+        const steps = 60;
+        const increment = target / steps;
+        let current = 0;
+        let step = 0;
+        const timer = setInterval(() => {
+          step++;
+          current = Math.min(Math.round(increment * step), target);
+          // ease out: slow down near end
+          const eased = Math.round(target * (1 - Math.pow(1 - step / steps, 3)));
+          el.textContent = prefix + Math.min(eased, target).toLocaleString() + suffix;
+          if (step >= steps) { el.textContent = prefix + target.toLocaleString() + suffix; clearInterval(timer); }
+        }, duration / steps);
+      });
+    }
+
+    const statsSection = document.querySelector('.stats-band');
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { animateCounters(); observer.disconnect(); }
+    }, { threshold: 0.3 });
+    observer.observe(statsSection);
+  </script>
 </body>
 </html>
