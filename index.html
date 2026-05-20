@@ -126,6 +126,7 @@
     <div class="wrap">
       <div style="display:grid; grid-template-columns:1fr 320px; gap:48px; align-items:center;" class="hero-grid">
         <div>
+          <img src="images/image-2.png" alt="Ricardo Ramirez Jr" class="mobile-avatar" />
           <div class="eyebrow">El Paso, TX · Remote</div>
           <h1>Enterprise analytics, built for your organization.</h1>
           <hr style="border:none; border-top:1px solid #d4a847; opacity:.55; margin:0 0 20px; max-width:380px;" />
@@ -141,9 +142,21 @@
     </div>
   </section>
   <style>
+    .mobile-avatar { display:none; }
     @media(max-width:860px){
       .hero-grid{ grid-template-columns:1fr !important; }
       .hero-photo-col{ display:none !important; }
+      .mobile-avatar {
+        display:block;
+        width:80px;
+        height:80px;
+        border-radius:50%;
+        object-fit:cover;
+        object-position:top;
+        border:2px solid rgba(255,255,255,.15);
+        margin-bottom:16px;
+        box-shadow:0 4px 20px rgba(0,0,0,.4);
+      }
     }
   </style>
 
