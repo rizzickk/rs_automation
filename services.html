@@ -123,7 +123,7 @@
       <div class="eyebrow">Services</div>
       <h1>Three ways I can help.</h1>
       <p class="lead">Pick what fits — or reach out and we'll build around what you actually need.</p>
-      <a href="#live-demo" style="display:inline-flex; align-items:center; gap:7px; margin-top:18px; color:#93c5fd; font-size:14px; font-weight:700; letter-spacing:.02em; transition:.15s ease;">
+      <a href="#live-demo" class="sample-reports-link" style="display:inline-flex; align-items:center; gap:7px; margin-top:18px; color:#93c5fd; font-size:14px; font-weight:700; letter-spacing:.02em; transition:.15s ease;">
         See sample reports
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2v8M3.5 6.5L7 10l3.5-3.5" stroke="#93c5fd" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -249,6 +249,8 @@
     .demo-table-inner td{padding:9px 14px;border-bottom:1px solid #f0f4fb;color:var(--text);}
     .demo-table-inner tr:last-child td{border-bottom:none;}
     .demo-table-inner tr:hover td{background:#f7f9ff;}
+    @keyframes nudgeDown{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(5px);}}
+    .sample-reports-link{animation:nudgeDown 2.8s ease-in-out infinite;}
     @keyframes flowPulse{0%{opacity:.2;transform:translateX(0);}50%{opacity:1;transform:translateX(4px);}100%{opacity:.2;transform:translateX(0);}}
     .flow-arrow{display:flex;align-items:center;gap:3px;}
     .flow-dot{width:6px;height:6px;border-radius:50%;background:var(--brand);animation:flowPulse 1.2s ease infinite;}
