@@ -198,6 +198,10 @@
     .fade-right.visible{opacity:1;transform:translateX(0);}
     .lyric-word{opacity:0;transition:opacity .25s ease;}
     .lyric-word.visible{opacity:1;}
+    @keyframes dramaticPop{0%{opacity:0;transform:translateY(14px) scale(.93);}70%{opacity:1;transform:translateY(-3px) scale(1.03);}100%{opacity:1;transform:translateY(0) scale(1);}}
+    @keyframes colorFlash{0%,100%{color:var(--text);}40%{color:#2563eb;}}
+    .dramatic-reveal{opacity:0;}
+    .dramatic-reveal.visible{animation:dramaticPop .65s cubic-bezier(.22,1,.36,1) forwards, colorFlash 1.1s ease .55s forwards;}
   </style>
 
   <section class="section" style="background: #fff;">
@@ -222,7 +226,7 @@
               <span style="font-size:16px; color:var(--muted);">Would you catch a data problem before it becomes a real crisis?</span>
             </div>
           </div>
-          <p class="fade-right" style="font-size:18px; font-weight:700; color:var(--text); margin:0; transition-delay:.55s;">The data is there. I'll show you what it means.</p>
+          <p class="dramatic-reveal" style="font-size:18px; font-weight:700; color:var(--text); margin:0; transition-delay:.7s;">The data is there. I'll show you what it means.</p>
         </div>
       </div>
     </div>
