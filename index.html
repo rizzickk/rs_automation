@@ -200,6 +200,8 @@
     .lyric-word.visible{opacity:1;}
     .dramatic-reveal{opacity:0;transition:opacity 1.8s ease;}
     .dramatic-reveal.visible{opacity:1;}
+    @keyframes nudgeDown{0%,60%,100%{transform:translateY(0);}30%{transform:translateY(-5px);}}
+    .sample-reports-link{animation:nudgeDown 2.8s ease-in-out infinite;}
   </style>
 
   <section class="section" style="background: #fff;">
@@ -303,7 +305,7 @@
           <p>Full reporting architecture. Automated pipelines, unified data sources, and documentation your team can run without me.</p>
         </div>
       </div>
-      <p style="margin-top: 24px; margin-bottom: 0;"><a href="services.html" style="color: var(--brand); font-weight: 700;">See all services →</a></p>
+      <p style="margin-top: 24px; margin-bottom: 0;"><a href="services.html" class="sample-reports-link" style="color: var(--brand); font-weight: 700; display:inline-block;">See all services →</a></p>
     </div>
   </section>
 
