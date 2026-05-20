@@ -224,7 +224,7 @@
               <span style="font-size:16px; color:var(--muted);">Would you catch a data problem before it becomes a real crisis?</span>
             </div>
           </div>
-          <p class="dramatic-reveal" style="font-size:18px; font-weight:700; color:var(--text); margin:0; transition-delay:1.6s;">The data is there. I'll show you what it means.</p>
+          <p id="dramatic-line" class="dramatic-reveal" style="font-size:18px; font-weight:700; color:var(--text); margin:0;">The data is there. I'll show you what it means.</p>
         </div>
       </div>
     </div>
@@ -259,13 +259,25 @@
       headingObserver.observe(headingEl);
 
       // fade-up and fade-right elements
-      var els = document.querySelectorAll('.fade-up, .fade-right, .dramatic-reveal');
+      var els = document.querySelectorAll('.fade-up, .fade-right');
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
         });
       },{threshold:0.15});
       els.forEach(function(el){ io.observe(el); });
+
+      // dramatic closing line — delayed separately
+      var dramaticEl = document.getElementById('dramatic-line');
+      var dramaticIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){
+            setTimeout(function(){ dramaticEl.classList.add('visible'); }, 1600);
+            dramaticIO.unobserve(e.target);
+          }
+        });
+      },{threshold:0.15});
+      dramaticIO.observe(dramaticEl);
     })();
   </script>
 
