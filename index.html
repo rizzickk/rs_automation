@@ -259,7 +259,7 @@
       headingObserver.observe(headingEl);
 
       // fade-up and fade-right elements
-      var els = document.querySelectorAll('.fade-up, .fade-right');
+      var els = document.querySelectorAll('.fade-up, .fade-right, .dramatic-reveal');
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
           if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
